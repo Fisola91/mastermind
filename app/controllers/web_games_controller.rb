@@ -1,5 +1,6 @@
 require "./app/web_ui"
 require "./app/web_submit"
+require "ostruct"
 class WebGamesController < ApplicationController
   def index
     @view = WebUI.new

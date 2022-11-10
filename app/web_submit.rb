@@ -1,5 +1,7 @@
 require_relative "web_ui"
 require_relative "constant_variable"
+require_relative "turn"
+require_relative "turn_message"
 
 class WebSubmit
   # CHANCES = 4
