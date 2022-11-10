@@ -1,4 +1,4 @@
-require "web_submit"
+require "./app/web_submit"
 
 
 RSpec.describe WebSubmit do

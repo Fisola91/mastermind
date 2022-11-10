@@ -1,9 +1,11 @@
 require_relative "web_ui"
+require_relative "constant_variable"
 
 class WebSubmit
-  CHANCES = 4
-  GUESSED_CORRECTLY = [:exact, :exact, :exact, :exact]
-  NIL_GUESSES = [nil, nil, nil, nil]
+  # CHANCES = 4
+  # GUESSED_CORRECTLY = [:exact, :exact, :exact, :exact]
+  # NIL_GUESSES = [nil, nil, nil, nil]
+  include ChancesAndGuesses
 
   def initialize(params)
     @params = params
