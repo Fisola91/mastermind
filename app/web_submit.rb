@@ -2,6 +2,7 @@ require_relative "web_ui"
 require_relative "constant_variable"
 require_relative "turn"
 require_relative "turn_message"
+require_relative "game_validation"
 
 class WebSubmit
   # CHANCES = 4
