@@ -1,5 +1,5 @@
 require "./app/web_ui"
-require "./app/web_submit"
+require "./app/components/web_submit_component"
 require "ostruct"
 class WebGamesController < ApplicationController
   def index
@@ -11,8 +11,8 @@ class WebGamesController < ApplicationController
     redirect_to "/game/#{passcode[0]}/#{passcode[1]}/#{passcode[2]}/#{passcode[3]}?current_attempt=0"
   end
 
-  def guess
-    action = WebSubmit.new(params)
+  def player_guess
+    action = WebSubmitComponent.new(params: params, view: @view)
     @view = action.view
     @params = params
   end

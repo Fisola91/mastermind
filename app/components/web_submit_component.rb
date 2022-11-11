@@ -1,17 +1,16 @@
-require_relative "web_ui"
-require_relative "constant_variable"
-require_relative "turn"
-require_relative "turn_message"
-require_relative "game_validation"
+# frozen_string_literal: true
+require "./app/web_ui"
+require "./app/constant_variable"
+require "./app/turn"
+require "./app/turn_message"
+require "./app/game_validation"
 
-class WebSubmit
-  # CHANCES = 4
-  # GUESSED_CORRECTLY = [:exact, :exact, :exact, :exact]
-  # NIL_GUESSES = [nil, nil, nil, nil]
+
+class WebSubmitComponent < ViewComponent::Base
   include ChancesAndGuesses
-
-  def initialize(params)
+  def initialize(params:, view:)
     @params = params
+    @view = view
   end
 
   def view

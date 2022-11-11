@@ -3,7 +3,6 @@
   p
     = "Attempt: #{@view.current_attempt.to_i + 1}/#{@view.chances}"
 
-
 form.pb2
   - @view.params.fetch("attempts", []).each do |attempt_number, guesses|
     p = "Attempt #{attempt_number.to_i + 1}"
