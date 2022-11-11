@@ -1,21 +1,3 @@
 = link_to "Start a new game", "/new_game"
 
-h2 Here's how we imagine the UI in the future
-.board
-  .secret-row.flex
-    - @view.code_length.times do |i|
-      .secret-cell.ba.b--black.dib.w2.h2.tc data-number=i
-        = "?"
-  - @view.guess_attempts.times do |guess_number|
-    .guess-row data-number=guess_number
-      - @view.code_length.times do |cell_number|
-        .guess-cell.ba.b--black.dib.w2.h2.tc data-number=cell_number
-          == "&nbsp;"
-      .guess-ratings.ml1.dib
-        - @view.code_length.times do |cell_number|
-          .guess-rating.ba.b--light-silver.dib.w2.h2.tc data-number=cell_number
-            =="&nbsp;"
-  .color-picker.mt3
-    - @view.colors.each do |color|
-      .color.dib.w2.h2.mr2.pointer data-color=color class="bg-#{color}"
-        == "&nbsp;"
+= render(WebUiComponent.new(view: @view))

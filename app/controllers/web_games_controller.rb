@@ -1,9 +1,11 @@
-require "./app/web_ui"
+# require "./app/web_ui"
 require "./app/components/web_submit_component"
+require "./app/components/web_ui_component"
 require "ostruct"
 class WebGamesController < ApplicationController
   def index
-    @view = WebUI.new
+    action = WebUiComponent.new(view: @view)
+    @view = action
   end
 
   def new_game
