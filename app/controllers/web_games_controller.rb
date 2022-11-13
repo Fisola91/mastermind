@@ -16,7 +16,6 @@ class WebGamesController < ApplicationController
   end
 
   def player_guess
-    binding.pry
     action = WebSubmitComponent.new(params: params, view: @view)
     @view = action.view
     @params = params
