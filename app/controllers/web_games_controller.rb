@@ -2,6 +2,8 @@
 require "./app/components/web_submit_component"
 require "./app/components/web_ui_component"
 require "ostruct"
+require "pry"
+
 class WebGamesController < ApplicationController
   def index
     action = WebUiComponent.new(view: @view)
@@ -14,6 +16,7 @@ class WebGamesController < ApplicationController
   end
 
   def player_guess
+    binding.pry
     action = WebSubmitComponent.new(params: params, view: @view)
     @view = action.view
     @params = params
