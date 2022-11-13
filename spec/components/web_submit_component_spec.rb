@@ -22,7 +22,7 @@ RSpec.describe WebSubmitComponent, type: :component do
   end
 
 
-  context "when displayed the guess page" do
+  context "when the guess page is displayed" do
     let(:params) do
       {
         "current_attempt"=>"0",
@@ -41,8 +41,8 @@ RSpec.describe WebSubmitComponent, type: :component do
   end
 
   describe "#view" do
-    context "first attempt, 4/4 match" do
-      let(:current_attempt) { 2 }
+    context "when make first attempt, 4/4 match" do
+      let(:current_attempt) { 1 }
       let(:guess1) { "RED" }
       let(:guess2) { "GREEN" }
       let(:guess3) { "BLUE" }
@@ -54,16 +54,14 @@ RSpec.describe WebSubmitComponent, type: :component do
 
         expect(view.chances).to eq 4
         expect(view.not_lost).to eq true
-        expect(view.current_attempt).to eq 2
-        expect(view.next_attempt).to eq 3
+        expect(view.current_attempt).to eq 1
+        expect(view.next_attempt).to eq 2
         expect(view.error_message).to eq nil
         expect(view.message).to eq "Congratulations!"
       end
     end
-  end
 
-  describe "cases: exact position(s)" do
-    context "first attempt, 1/4 match" do
+    context "when make first attempt, 1/4 match" do
       let(:current_attempt) { 1 }
       let(:guess1) { "RED" }
       let(:guess2) { "PURPLE" }
@@ -80,6 +78,26 @@ RSpec.describe WebSubmitComponent, type: :component do
         expect(view.next_attempt).to eq 2
         expect(view.error_message).to eq nil
         expect(view.message).to eq "One color guessed at the exact position."
+      end
+    end
+
+    context "when make second attempt, 2/4 match" do
+      let(:current_attempt) { 2 }
+      let(:guess1) { "RED" }
+      let(:guess2) { "GREEN" }
+      let(:guess3) { "PURPLE" }
+      let(:guess4) { "ORANGE" }
+
+      it "returns a message for two accurate color guesses" do
+        subject = described_class.new(params: params, view: @view)
+        view = subject.view
+
+        expect(view.chances).to eq 4
+        expect(view.not_lost).to eq true
+        expect(view.current_attempt).to eq 2
+        expect(view.next_attempt).to eq 3
+        expect(view.error_message).to eq nil
+        expect(view.message).to eq  "Two colors guessed at the exact position."
       end
     end
   end
