@@ -39,7 +39,7 @@ RSpec.describe WebSubmitComponent, type: :component do
   end
 
   describe "#view" do
-    context "when make first attempt, 4/4 match" do
+    context "when make the first attempt, 4/4 match" do
       let(:current_attempt) { 1 }
       let(:guess1) { "RED" }
       let(:guess2) { "GREEN" }
@@ -59,7 +59,7 @@ RSpec.describe WebSubmitComponent, type: :component do
       end
     end
 
-    context "when make first attempt, 1/4 match" do
+    context "when make the first attempt, 1/4 match" do
       let(:current_attempt) { 1 }
       let(:guess1) { "RED" }
       let(:guess2) { "PURPLE" }
@@ -79,7 +79,7 @@ RSpec.describe WebSubmitComponent, type: :component do
       end
     end
 
-    context "when make second attempt, 2/4 match" do
+    context "when make the second attempt, 2/4 match" do
       let(:current_attempt) { 2 }
       let(:guess1) { "RED" }
       let(:guess2) { "GREEN" }
