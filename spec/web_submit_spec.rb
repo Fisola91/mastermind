@@ -496,7 +496,7 @@ RSpec.describe WebSubmit do
     end
   end
 
-  xdescribe "initial game state" do
+  describe "initial game state" do
     it "has correct state" do
       params = {
         current_attempt: 0,
