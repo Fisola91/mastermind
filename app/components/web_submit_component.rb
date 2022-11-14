@@ -50,6 +50,7 @@ class WebSubmitComponent < ViewComponent::Base
       next_attempt: next_attempt,
       error_message: error_message,
       message: message,
+      # colors: ValidColor.select(:colors).first[:colors],
       colors: WebUI.new.colors,
       won: won,
       params: params,
@@ -81,12 +82,13 @@ class WebSubmitComponent < ViewComponent::Base
   end
 
   def passcode
-    [
-      params[:code1],
-      params[:code2],
-      params[:code3],
-      params[:code4]
-    ]
+    # [
+    #   params[:code1],
+    #   params[:code2],
+    #   params[:code3],
+    #   params[:code4]
+    # ]
+    ValidColor.passcode
   end
 
   def guess_colors

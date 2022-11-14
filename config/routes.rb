@@ -6,6 +6,6 @@ Rails.application.routes.draw do
   root to: "web_games#index"
   get "/new_game", to: "web_games#new_game"
   # verb "/path", to: "controller#action"
-  get "/game/:code1/:code2/:code3/:code4", to: "web_games#player_guess"
-  # get "/game/:guess1/:guess2/:guess3/:guess4", to: "web_games#player_guess"
+  # get "/game/:code1/:code2/:code3/:code4", to: "web_games#player_guess"
+  get "/player_guess", to: "web_games#player_guess"
 end
