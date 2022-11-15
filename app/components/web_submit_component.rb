@@ -28,6 +28,7 @@ class WebSubmitComponent < ViewComponent::Base
 
       if error_message.nil?
         turn = Turn.new(passcode: passcode)
+        p passcode
         result = turn.guess(guess_colors)
         if result == GUESSED_CORRECTLY
           won = true

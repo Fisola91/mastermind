@@ -20,6 +20,7 @@ RSpec.describe WebSubmitComponent, type: :component do
   end
 
 
+
   context "when the guess page is displayed" do
     let(:params) do
       {
