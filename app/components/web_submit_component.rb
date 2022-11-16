@@ -4,13 +4,15 @@ require "./app/constant_variable"
 require "./app/turn"
 require "./app/turn_message"
 require "./app/game_validation"
-
+require "json"
 
 class WebSubmitComponent < ViewComponent::Base
   include ChancesAndGuesses
-  def initialize(params:, view:)
+  def initialize(params:, view:, player:, game:)
     @params = params
     @view = view
+    @player = player
+    @game = game
   end
 
   def view
@@ -83,13 +85,14 @@ class WebSubmitComponent < ViewComponent::Base
   end
 
   def passcode
+    game = Game.find(params[:id])
+    JSON.parse(game.passcode)
     # [
     #   params[:code1],
     #   params[:code2],
     #   params[:code3],
     #   params[:code4]
     # ]
-    ValidColor.passcode
   end
 
   def guess_colors
