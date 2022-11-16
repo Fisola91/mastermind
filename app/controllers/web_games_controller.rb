@@ -10,10 +10,10 @@ class WebGamesController < ApplicationController
     @view = action
   end
 
-  def new_game
+  def new
     # passcode = ValidColor.passcode
     # redirect_to "/game/#{passcode[0]}/#{passcode[1]}/#{passcode[2]}/#{passcode[3]}?current_attempt=0"
-    redirect_to "/player_guess"
+    redirect_to  player_guess_web_games_path
   end
 
   def player_guess

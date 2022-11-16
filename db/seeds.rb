@@ -6,13 +6,16 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 ValidColor.destroy_all
+Player.destroy_all
 
-color = ValidColor.create(colors: %w(
-                                      RED
-                                      ORANGE
-                                      YELLOW
-                                      GREEN
-                                      BLUE
-                                      PURPLE
+ValidColor.create!(colors: %w(
+                              RED
+                              ORANGE
+                              YELLOW
+                              GREEN
+                              BLUE
+                              PURPLE
   )
 )
+
+Player.create!(name: "Scoal")

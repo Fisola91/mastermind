@@ -1,0 +1,13 @@
+/ h1 Sessions#new
+/ p Find me in app/views/sessions/new.html.slim
+/ <%= form_with url: sessions_path, method: :post, html: { "data-turbo" => false } do |f| %>
+/   <%= f.label :name, "Player name" %>
+/   <%= f.text_field :name %>
+/   <%= f.submit "Start player session" %>
+/ <% end %>
+
+= form_with url: sessions_path, method: :post, html: { "data-turbo" => false } do |f|
+  = f.label :name, "player name"
+  = f.text_field :name
+  = f.submit "Start player session"
+-end
