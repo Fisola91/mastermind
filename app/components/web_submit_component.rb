@@ -3,14 +3,11 @@ require "./app/web_ui"
 require "./app/constant_variable"
 require "./app/turn"
 require "./app/turn_message"
-require "./app/game_validation"
 require "json"
 
 class WebSubmitComponent < ViewComponent::Base
   include ChancesAndGuesses
-  def initialize(params:, player:, game:)
-    @params = params
-    @player = player
+  def initialize(game:)
     @game = game
   end
 

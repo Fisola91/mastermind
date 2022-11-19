@@ -10,7 +10,7 @@
   h3 Guess!
   p
     = "Attempt: #{current_attempt}/#{chances}"
-  = form_with url: game_attempts_path(game), method: :post, class: "pb2", html: { "data-turbo" => false }
+  = form_with url: game_attempts_path(game), method: :post, class: "pb2", html: { "data-turbo" => false } do
     p = "Your guess"
     select name="guess[]" autofocus="autofocus"
       option selected="selected"
