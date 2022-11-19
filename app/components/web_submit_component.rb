@@ -52,6 +52,7 @@ class WebSubmitComponent < ViewComponent::Base
       "You lost, ran out of turns."
     else
       turn = Turn.new(passcode: passcode)
+      p passcode
       result = turn.guess(last_guess)
       TurnMessage.for(result)
     end

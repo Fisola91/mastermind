@@ -1,3 +1,4 @@
+require "./app/validate_input"
 class AttemptsController < ApplicationController
   def create
     if session[:current_player_id]
