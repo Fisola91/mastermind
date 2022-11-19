@@ -1,10 +1,6 @@
 # frozen_string_literal: true
 
 class WebUiComponent < ViewComponent::Base
-  def initialize(view:)
-    @view = view
-  end
-
   def guess_attempts
     10
   end
