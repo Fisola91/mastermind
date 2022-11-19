@@ -5,11 +5,20 @@ Rails.application.routes.draw do
   # resources :web_games do
   #   get :new, on: :collection
   # end
-  resources :games, only: %i(create show)
+
+  resources :games, only: %i(new show create update)
+  # do
+  #   resources :attempts, only: %i(create)
+  # end
   # do
   #   # member do
   #   #   get :guess
   #   # end
+  # end
+  # resources :games do
+  #   collection do
+  #     get :create_pass
+  #   end
   # end
 
   # resources :web_games do

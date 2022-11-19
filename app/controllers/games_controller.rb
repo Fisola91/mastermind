@@ -8,16 +8,10 @@ class GamesController < ApplicationController
   def index
     action = WebUiComponent.new(view: @view)
     @view = action
-    # @player = Player.find(session[:current_player_id])
   end
 
-  # def new
-  #   # passcode = ValidColor.passcode
-  #   # redirect_to "/game/#{passcode[0]}/#{passcode[1]}/#{passcode[2]}/#{passcode[3]}?current_attempt=0"
-  #   redirect_to  games_path
-  # end
 
-  def create
+  def new
     if session[:current_player_id]
       game = Game.create!(passcode: ValidColor.passcode)
       redirect_to game_path(game)
@@ -27,12 +21,37 @@ class GamesController < ApplicationController
   def show
     if session[:current_player_id]
       @player = Player.find(session[:current_player_id])
-      # @game = Game.find(params[:game_id])
-      action = WebSubmitComponent.new(params: params, view: @view, player: @player, game: @game)
+      game = Game.find(params[:id])
+      action = WebSubmitComponent.new(params: params, view: @view, player: @player, game: game)
       @view = action.view
       @params = params
-    else
-      render plain: "Unauthorized"
     end
   end
+
+  def update
+    if session[:current_player_id]
+      game = Game.find(params[:id])
+      player = Player.find(session[:current_player_id])
+      guess = [
+        params.dig("attempts", 0, "guess1"),
+        params.dig("attempts", 0, "guess2"),
+        params.dig("attempts", 0, "guess3"),
+        params.dig("attempts", 0, "guess4")
+      ]
+      if Attempt.update!(
+        player: player,
+        game: game,
+        values: guess
+        )
+        redirect_to game_path(game)
+      end
+    end
+  end
+
+  # private
+
+  # def previous_attempt
+  #   params.dig("current_attempt")
+  #   # (current_attempt - 1).to_s
+  # end
 end

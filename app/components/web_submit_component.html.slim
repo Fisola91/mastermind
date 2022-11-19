@@ -3,7 +3,7 @@
   p
     = "Attempt: #{@view.current_attempt.to_i + 1}/#{@view.chances}"
 
-form.pb2
+form.pb2 action=games_path(game) method="post"
   - @view.params.fetch("attempts", []).each do |attempt_number, guesses|
     p = "Attempt #{attempt_number.to_i + 1}"
     - guesses.each do |key, value|
@@ -37,6 +37,7 @@ form.pb2
     br
 
     input name="current_attempt" type="hidden" value=(@view.next_attempt)
+    input type="hidden" name="_method" value="patch"
     input type="submit" value="Check"
 
 - if @view.error_message

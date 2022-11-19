@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_16_093829) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_18_183239) do
+  create_table "attempts", force: :cascade do |t|
+    t.text "values"
+    t.integer "player_id", null: false
+    t.integer "game_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_id"], name: "index_attempts_on_game_id"
+    t.index ["player_id"], name: "index_attempts_on_player_id"
+  end
+
   create_table "games", force: :cascade do |t|
     t.text "passcode"
     t.datetime "created_at", null: false
@@ -29,4 +39,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_16_093829) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "attempts", "games"
+  add_foreign_key "attempts", "players"
 end
