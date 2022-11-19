@@ -1,48 +1,37 @@
-- if @view.not_lost && !@view.won
+- if message
+  .bg-blue.h3.white.pa2
+    = message
+
+- previous_attempts.each.with_index(1) do |attempt, attempt_number|
+  - colors = attempt.values.join(", ")
+  p = "Attempt #{attempt_number}: #{colors}"
+
+- if attempts_left?
   h3 Guess!
   p
-    = "Attempt: #{@view.current_attempt.to_i + 1}/#{@view.chances}"
-
-form.pb2 action=games_path(game) method="post"
-  - @view.params.fetch("attempts", []).each do |attempt_number, guesses|
-    p = "Attempt #{attempt_number.to_i + 1}"
-    - guesses.each do |key, value|
-      select name="attempts[#{attempt_number}][#{key}]"
-        - @view.colors.each do |color|
-          option value=color.upcase selected=("selected" if value == color.upcase)
-            = color
-    br
-  - if !@view.won && @view.current_attempt < @view.chances
+    = "Attempt: #{current_attempt}/#{chances}"
+  = form_with url: game_attempts_path(game), method: :post, class: "pb2", html: { "data-turbo" => false }
     p = "Your guess"
-    select name="attempts[#{@view.current_attempt}][guess1]" autofocus="autofocus"
+    select name="guess[]" autofocus="autofocus"
       option selected="selected"
-      - @view.colors.each do |color|
+      - colors.each do |color|
         option value=color.upcase
           = color
-    select name="attempts[#{@view.current_attempt}][guess2]"
+    select name="guess[]"
       option selected="selected"
-      - @view.colors.each do |color|
+      - colors.each do |color|
         option value=color.upcase
           = color
-    select name="attempts[#{@view.current_attempt}][guess3]"
+    select name="guess[]"
       option selected="selected"
-      - @view.colors.each do |color|
+      - colors.each do |color|
         option value=color.upcase
           = color
-    select name="attempts[#{@view.current_attempt}][guess4]"
+    select name="guess[]"
       option selected="selected"
-      - @view.colors.each do |color|
+      - colors.each do |color|
         option value=color.upcase
           = color
     br
 
-    input name="current_attempt" type="hidden" value=(@view.next_attempt)
-    input type="hidden" name="_method" value="patch"
     input type="submit" value="Check"
-
-- if @view.error_message
-  pre.bg-red.h3.white.pa2
-    = @view.error_message
-- if @view.message
-  pre.bg-blue.h3.white.pa2
-    = @view.message

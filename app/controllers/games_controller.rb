@@ -6,6 +6,9 @@ require "pry"
 
 class GamesController < ApplicationController
   def index
+    if session[:current_player_id]
+      @player = Player.find(session[:current_player_id])
+    end
     action = WebUiComponent.new(view: @view)
     @view = action
   end
@@ -13,8 +16,11 @@ class GamesController < ApplicationController
 
   def new
     if session[:current_player_id]
+      @player = Player.find(session[:current_player_id])
       game = Game.create!(passcode: ValidColor.passcode)
       redirect_to game_path(game)
+    else
+      redirect_to new_session_path
     end
   end
 
@@ -22,9 +28,11 @@ class GamesController < ApplicationController
     if session[:current_player_id]
       @player = Player.find(session[:current_player_id])
       game = Game.find(params[:id])
-      action = WebSubmitComponent.new(params: params, view: @view, player: @player, game: game)
-      @view = action.view
-      @params = params
+      @component = WebSubmitComponent.new(
+        params: params,
+        player: @player,
+        game: game
+      )
     end
   end
 

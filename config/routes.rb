@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   #   get :new, on: :collection
   # end
 
-  resources :games, only: %i(new show create update)
+  resources :games, only: %i(new show create update) do
+    resources :attempts, only: %i(create)
+  end
   # do
   #   resources :attempts, only: %i(create)
   # end
