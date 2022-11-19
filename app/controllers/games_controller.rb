@@ -6,6 +6,7 @@ class GamesController < ApplicationController
     @component = WebUiComponent.new
   end
 
+
   def create
     if session[:current_player_id]
       @player = Player.find(session[:current_player_id])
