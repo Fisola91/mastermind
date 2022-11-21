@@ -10,7 +10,8 @@ class WebSubmitComponent < ViewComponent::Base
   include ChancesAndGuesses
   def initialize(game:)
     @game = game
-    player = @player
+    @player = false
+    @compuer = false
   end
 
   attr_reader :game
@@ -42,6 +43,8 @@ class WebSubmitComponent < ViewComponent::Base
     # game.passcode.split(" ")
     # binding.pry
     JSON.parse(game.passcode)
+    # code.uniq.length == 4 ? code : "not unique"
+    # binding.pry
 
   end
 
