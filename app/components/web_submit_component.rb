@@ -10,8 +10,6 @@ class WebSubmitComponent < ViewComponent::Base
   include ChancesAndGuesses
   def initialize(game:)
     @game = game
-    @player = false
-    @compuer = false
   end
 
   attr_reader :game

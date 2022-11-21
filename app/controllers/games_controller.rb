@@ -26,7 +26,7 @@ class GamesController < ApplicationController
     if session[:current_player_id]
       player = Player.find(session[:current_player_id])
       game = Game.create!(passcode: ValidColor.passcode)
-      codebreaker = Codebreaker.create!(mode: params[:codebreaker], player_id: player.id)
+      codebreaker = Codebreaker.create!(mode: params[:codebreaker], player_id: player.id, game_id: game.id)
       redirect_to game_path(game)
     else
       redirect_to new_session_path
@@ -37,8 +37,6 @@ class GamesController < ApplicationController
     if session[:current_player_id]
       @player = Player.find(session[:current_player_id])
       game = Game.find(params[:id])
-      codebreaker = Codebreaker.find(params[:id])
-      binding.pry
       @component = WebSubmitComponent.new(game: game)
     end
   end
