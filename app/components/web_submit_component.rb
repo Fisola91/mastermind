@@ -4,11 +4,13 @@ require "./app/constant_variable"
 require "./app/turn"
 require "./app/turn_message"
 require "json"
+require "./app/controllers/games_controller"
 
 class WebSubmitComponent < ViewComponent::Base
   include ChancesAndGuesses
   def initialize(game:)
     @game = game
+    player = @player
   end
 
   attr_reader :game
@@ -18,6 +20,7 @@ class WebSubmitComponent < ViewComponent::Base
   end
 
   def won?
+    # The same passcode will be used here
     last_guess == passcode
   end
 
@@ -34,7 +37,12 @@ class WebSubmitComponent < ViewComponent::Base
   end
 
   def passcode
+    # g = game.id
+    # binding.pry
+    # game.passcode.split(" ")
+    # binding.pry
     JSON.parse(game.passcode)
+
   end
 
   def chances
