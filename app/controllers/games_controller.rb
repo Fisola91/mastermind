@@ -10,6 +10,7 @@ class GamesController < ApplicationController
   def new
     if session[:current_player_id]
       player = Player.find(session[:current_player_id])
+      Game.new
     end
   end
 
@@ -17,7 +18,15 @@ class GamesController < ApplicationController
     if session[:current_player_id]
       player = Player.find(session[:current_player_id])
       game = Game.create!(passcode: params[:passcode].upcase.split(" ").to_s)
-      redirect_to game_path(game)
+      codebmaker = Codemaker.create!(
+        player: player,
+        game: game
+      )
+      if JSON.parse(game.passcode).uniq.length == 4
+        redirect_to game_path(game)
+      else
+        render plain: "You must enter a unique set of colors"
+      end
       # game.uniq.length != 4 ? "Not unique" : redirect_to game_path(game)
     end
   end
@@ -26,7 +35,10 @@ class GamesController < ApplicationController
     if session[:current_player_id]
       player = Player.find(session[:current_player_id])
       game = Game.create!(passcode: ValidColor.passcode)
-      codebreaker = Codebreaker.create!(mode: params[:codebreaker], player_id: player.id, game_id: game.id)
+      codebreaker = Codebreaker.create!(
+        player: player,
+        game: game
+      )
       redirect_to game_path(game)
     else
       redirect_to new_session_path
@@ -37,10 +49,17 @@ class GamesController < ApplicationController
     if session[:current_player_id]
       @player = Player.find(session[:current_player_id])
       game = Game.find(params[:id])
-      @component = WebSubmitComponent.new(game: game)
+      codebreaker = Codebreaker.find_by(game: game)
+      codemaker = Codemaker.find_by(game: game)
+
+      codebreaker || codemaker ?  @component = WebSubmitComponent.new(game: game) : nil
     end
   end
 end
+
+## Idf codemaker
+# when the codemaker set the secret code and click continue
+# The next page should automatically tell the computer to play the game
 
 
 

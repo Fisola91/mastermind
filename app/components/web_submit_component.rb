@@ -36,14 +36,7 @@ class WebSubmitComponent < ViewComponent::Base
   end
 
   def passcode
-    # g = game.id
-    # binding.pry
-    # game.passcode.split(" ")
-    # binding.pry
     JSON.parse(game.passcode)
-    # code.uniq.length == 4 ? code : "not unique"
-    # binding.pry
-
   end
 
   def chances

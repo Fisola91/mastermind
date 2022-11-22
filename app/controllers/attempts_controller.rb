@@ -4,10 +4,12 @@ class AttemptsController < ApplicationController
     if session[:current_player_id]
       player = Player.find(session[:current_player_id])
       game = Game.find(params[:game_id])
-      if codebreaker = Codebreaker.find_by(game_id: game)
+      if Codemaker.find_by(game_id: game)
         guess = params[:guess]
-      binding.pry
+      else
+        guess = params[:guess]
       end
+      # binding.pry
       # binding.pry
 
       begin
