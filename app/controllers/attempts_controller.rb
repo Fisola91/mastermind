@@ -4,14 +4,7 @@ class AttemptsController < ApplicationController
     if session[:current_player_id]
       player = Player.find(session[:current_player_id])
       game = Game.find(params[:game_id])
-      if Codemaker.find_by(game_id: game)
-        guess = params[:guess]
-      else
-        guess = params[:guess]
-      end
-      # binding.pry
-      # binding.pry
-
+      guess = params[:guess]
       begin
         ValidateInput.call(guess)
       rescue UnknownColorError
