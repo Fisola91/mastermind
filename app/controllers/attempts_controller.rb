@@ -6,6 +6,7 @@ class AttemptsController < ApplicationController
       game = Game.find(params[:game_id])
       guess = params[:guess]
 
+
       begin
         ValidateInput.call(guess)
       rescue UnknownColorError
@@ -24,4 +25,5 @@ class AttemptsController < ApplicationController
       render status: :unauthorized
     end
   end
+
 end
