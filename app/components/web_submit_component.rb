@@ -19,7 +19,6 @@ class WebSubmitComponent < ViewComponent::Base
   end
 
   def won?
-    # The same passcode will be used here
     last_guess == passcode
   end
 
@@ -54,7 +53,6 @@ class WebSubmitComponent < ViewComponent::Base
       "You lost, ran out of turns."
     else
       turn = Turn.new(passcode: passcode)
-      p passcode
       result = turn.guess(last_guess)
       TurnMessage.for(result)
     end
