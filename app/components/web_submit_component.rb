@@ -8,8 +8,10 @@ require "./app/controllers/games_controller"
 
 class WebSubmitComponent < ViewComponent::Base
   include ChancesAndGuesses
-  def initialize(game:)
+  def initialize(game:, codebreaker:, codemaker:)
     @game = game
+    @codebreaker = codebreaker
+    @codemaker = codemaker
   end
 
   attr_reader :game
@@ -69,4 +71,9 @@ class WebSubmitComponent < ViewComponent::Base
   def ran_out_of_attempts?
     current_attempt > CHANCES
   end
+
+  def computer_guesses
+    computer_tries = []
+    computer_tries << ValidColor.passcode
+    computer_tries.last
 end
