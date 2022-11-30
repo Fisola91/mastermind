@@ -18,13 +18,33 @@ class GamesController < ApplicationController
     # computer_tries = []
     if session[:current_player_id]
       player = Player.find(session[:current_player_id])
-      game = Game.create!(passcode: params[:passcode].upcase.split(" ").to_s)
+      passcode = params[:passcode].upcase.split(" ").to_s
+      game = Game.create!(passcode: passcode)
       codemaker = Codemaker.create!(
         player: player,
         game: game
       )
-      clean_game = JSON.parse(game.passcode)
-      if clean_game.uniq.length == 4
+      passcode_colors = JSON.parse(game.passcode)
+
+      if passcode_colors.uniq.length == 4
+        computer_player = Player.find_or_create_by!(
+          name: "Computer"
+        )
+
+        while game.attempts.count < ChancesAndGuesses::CHANCES
+          guess = ValidColor.passcode
+
+          Attempt.create!(
+            game: game,
+            player: computer_player,
+            values: guess
+          )
+
+          if guess == passcode
+            break
+          end
+        end
+
         redirect_to game_path(game)
       else
         render plain: "You must enter unique set of colors."

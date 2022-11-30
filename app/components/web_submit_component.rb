@@ -76,4 +76,5 @@ class WebSubmitComponent < ViewComponent::Base
     computer_tries = []
     computer_tries << ValidColor.passcode
     computer_tries.last
+  end
 end
