@@ -1,5 +1,8 @@
 = form_with url: games_path, method: :post, html: { "data-turbo" => false } do |f|
-  = f.submit "Start a new game"
+  = f.submit "codebreaker"
+
+= form_with url: new_game_path, method: :get, html: { "data-turbo" => false } do |f|
+  = f.submit "codemaker"
 
 h2 Here's how we imagine the UI in the future
 .board

@@ -12,26 +12,48 @@
     = "Attempt: #{current_attempt}/#{chances}"
   = form_with url: game_attempts_path(game), method: :post, class: "pb2", html: { "data-turbo" => false } do
     p = "Your guess"
-    select name="guess[]" autofocus="autofocus"
-      option selected="selected"
-      - colors.each do |color|
-        option value=color.upcase
-          = color
-    select name="guess[]"
-      option selected="selected"
-      - colors.each do |color|
-        option value=color.upcase
-          = color
-    select name="guess[]"
-      option selected="selected"
-      - colors.each do |color|
-        option value=color.upcase
-          = color
-    select name="guess[]"
-      option selected="selected"
-      - colors.each do |color|
-        option value=color.upcase
-          = color
+    - if @codebreaker
+      select name="guess[]" autofocus="autofocus"
+        option selected="selected"
+        - colors.each do |color|
+          option value=color.upcase
+            = color
+      select name="guess[]"
+        option selected="selected"
+        - colors.each do |color|
+          option value=color.upcase
+            = color
+      select name="guess[]"
+        option selected="selected"
+        - colors.each do |color|
+          option value=color.upcase
+            = color
+      select name="guess[]"
+        option selected="selected"
+        - colors.each do |color|
+          option value=color.upcase
+            = color
+    - else
+      select name="guess[]" autofocus="autofocus"
+        option selected="selected"
+        - colors.each do |color|
+          option value=computer_guesses[0] selected=("selected" if computer_guesses[0])
+            = color
+      select name="guess[]"
+        option selected="selected"
+        - colors.each do |color|
+          option value=computer_guesses[1] selected=("selected" if computer_guesses[1])
+            = color
+      select name="guess[]"
+        option selected="selected"
+        - colors.each do |color|
+          option value=computer_guesses[2] selected=("selected" if computer_guesses[2])
+            = color
+      select name="guess[]"
+        option selected="selected"
+        - colors.each do |color|
+          option value=computer_guesses[3] selected=("selected" if computer_guesses[3])
+            = color
     br
 
     input type="submit" value="Check"

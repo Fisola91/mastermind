@@ -4,11 +4,14 @@ require "./app/constant_variable"
 require "./app/turn"
 require "./app/turn_message"
 require "json"
+require "./app/controllers/games_controller"
 
 class WebSubmitComponent < ViewComponent::Base
   include ChancesAndGuesses
-  def initialize(game:)
+  def initialize(game:, codebreaker:, codemaker:)
     @game = game
+    @codebreaker = codebreaker
+    @codemaker = codemaker
   end
 
   attr_reader :game
@@ -52,7 +55,6 @@ class WebSubmitComponent < ViewComponent::Base
       "You lost, ran out of turns."
     else
       turn = Turn.new(passcode: passcode)
-      p passcode
       result = turn.guess(last_guess)
       TurnMessage.for(result)
     end
@@ -68,5 +70,11 @@ class WebSubmitComponent < ViewComponent::Base
 
   def ran_out_of_attempts?
     current_attempt > CHANCES
+  end
+
+  def computer_guesses
+    computer_tries = []
+    computer_tries << ValidColor.passcode
+    computer_tries.last
   end
 end

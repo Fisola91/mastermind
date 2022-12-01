@@ -1,0 +1,7 @@
+h2 Code Maker
+p = "Pick four of these colors %w(RED ORANGE YELLOW GREEN BLUE PURPLE) to make a secret code."
+
+= form_with url: player_passcode_games_path, method: :post, class: "pb2", html: { "data-turbo" => false } do |f|
+  = f.label :passcode
+  = f.text_field :passcode
+  = f.submit "Submit"

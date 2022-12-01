@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_18_183239) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_21_162940) do
   create_table "attempts", force: :cascade do |t|
     t.text "values"
     t.integer "player_id", null: false
@@ -19,6 +19,24 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_18_183239) do
     t.datetime "updated_at", null: false
     t.index ["game_id"], name: "index_attempts_on_game_id"
     t.index ["player_id"], name: "index_attempts_on_player_id"
+  end
+
+  create_table "codebreakers", force: :cascade do |t|
+    t.integer "player_id", null: false
+    t.integer "game_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_id"], name: "index_codebreakers_on_game_id"
+    t.index ["player_id"], name: "index_codebreakers_on_player_id"
+  end
+
+  create_table "codemakers", force: :cascade do |t|
+    t.integer "player_id", null: false
+    t.integer "game_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_id"], name: "index_codemakers_on_game_id"
+    t.index ["player_id"], name: "index_codemakers_on_player_id"
   end
 
   create_table "games", force: :cascade do |t|
@@ -41,4 +59,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_18_183239) do
 
   add_foreign_key "attempts", "games"
   add_foreign_key "attempts", "players"
+  add_foreign_key "codebreakers", "games"
+  add_foreign_key "codebreakers", "players"
+  add_foreign_key "codemakers", "games"
+  add_foreign_key "codemakers", "players"
 end
