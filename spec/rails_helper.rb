@@ -66,6 +66,10 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
   config.include ViewComponent::TestHelpers, type: :component
   config.include Capybara::RSpecMatchers, type: :component
+  config.before(:example, type: :system) do
+    driven_by :selenium, using: :headless_chrome
+  end
+
 end
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|
