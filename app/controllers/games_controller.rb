@@ -48,6 +48,8 @@ class GamesController < ApplicationController
         redirect_to game_path(game)
       else
         render plain: "You must enter unique set of colors."
+      end
+    end
     if session[:current_player_id]
       player = Player.find(session[:current_player_id])
       game = Game.create!(passcode: params[:passcode].upcase.split(" ").to_s)
