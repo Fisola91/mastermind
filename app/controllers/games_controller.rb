@@ -48,6 +48,7 @@ class GamesController < ApplicationController
         redirect_to game_path(game)
       else
         render plain: "You must enter unique set of colors."
+<<<<<<< HEAD
       end
     end
     if session[:current_player_id]
@@ -61,6 +62,8 @@ class GamesController < ApplicationController
         redirect_to game_path(game)
       else
         render plain: "You must enter a unique set of colors."
+=======
+>>>>>>> fdd2ef96e56ac23348b04af8a64cf37da9b6f1e9
       end
     end
   end
