@@ -48,10 +48,6 @@ RSpec.describe "guessing game" do
     expect(page).to have_text("Congratulations!")
   end
 
-  context "when at the exact position" do
-
-  end
-
   it "allows a player to play and guess a color at the exact position on first attempt" do
     visit "/"
     click_on "codebreaker"
@@ -66,8 +62,7 @@ RSpec.describe "guessing game" do
     passcode_colors = JSON.parse(Game.last.passcode)
     select_values = passcode_colors.map(&:downcase)
 
-    valid_colors = ValidColor.select(:colors)
-                             .first[:colors]
+    valid_colors = ValidColor.select(:colors).first[:colors]
     select_colors = valid_colors.map(&:downcase)
 
     color_difference = select_colors - select_values
