@@ -135,6 +135,4 @@ RSpec.describe "guessing game" do
 
     expect(page).to have_text("One color guessed at the wrong position.")
   end
-
-
 end
