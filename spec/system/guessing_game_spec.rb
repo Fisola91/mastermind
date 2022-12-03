@@ -165,7 +165,7 @@ RSpec.describe "guessing game" do
     expect(page).to have_text("Three colors guessed at the exact position.")
   end
 
-  it "allows a player to run out of attempt on last attempt" do
+  it "allows a player to run out of attempt" do
     visit "/"
     click_on "codebreaker"
     fill_in "player name", with: "Tester"
@@ -229,6 +229,5 @@ RSpec.describe "guessing game" do
     click_on "Check"
 
     expect(page).to have_text("You lost, ran out of turns.")
-
   end
 end
