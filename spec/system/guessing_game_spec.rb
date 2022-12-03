@@ -165,7 +165,7 @@ RSpec.describe "guessing game" do
     expect(page).to have_text("Three colors guessed at the exact position.")
   end
 
-  it "allows a player to play and guess three colors at the exact position on first attempt" do
+  it "allows a player to run out of attempt on last attempt" do
     visit "/"
     click_on "codebreaker"
     fill_in "player name", with: "Tester"
@@ -179,18 +179,56 @@ RSpec.describe "guessing game" do
     passcode_colors = JSON.parse(Game.last.passcode)
     select_values = passcode_colors.map(&:downcase)
 
-    valid_colors = ValidColor.select(:colors).first[:colors]
-    select_colors = valid_colors.map(&:downcase)
+    select select_values[0], from: "color-1"
+    select select_values[1], from: "color-2"
+    select select_values[2], from: "color-3"
+    select select_values[0], from: "color-4"
 
-    color_difference = select_colors - select_values
+    click_on "Check"
+
+    expect(page).to have_text("Four colors guessed, three at the exact position and one at the wrong position.")
+    expect(page).to have_text("You are playing as Tester")
+    expect(page).to have_text("Guess!")
+    expect(page).to have_text("Attempt: 2/4")
+    expect(page).to have_text("Attempt 1: #{passcode_colors[0]}, #{passcode_colors[1]}, #{passcode_colors[2]}, #{passcode_colors[0]}")
+    expect(page).to have_text("Your guess")
 
     select select_values[0], from: "color-1"
     select select_values[1], from: "color-2"
     select select_values[2], from: "color-3"
-    select color_difference[0], from: "color-4"
+    select select_values[0], from: "color-4"
 
     click_on "Check"
 
-    expect(page).to have_text("Three colors guessed at the exact position.")
+    expect(page).to have_text("Four colors guessed, three at the exact position and one at the wrong position.")
+    expect(page).to have_text("You are playing as Tester")
+    expect(page).to have_text("Guess!")
+    expect(page).to have_text("Attempt: 3/4")
+    expect(page).to have_text("Attempt 2: #{passcode_colors[0]}, #{passcode_colors[1]}, #{passcode_colors[2]}, #{passcode_colors[0]}")
+    expect(page).to have_text("Your guess")
+
+    select select_values[0], from: "color-1"
+    select select_values[1], from: "color-2"
+    select select_values[2], from: "color-3"
+    select select_values[0], from: "color-4"
+
+    click_on "Check"
+
+    expect(page).to have_text("Four colors guessed, three at the exact position and one at the wrong position.")
+    expect(page).to have_text("You are playing as Tester")
+    expect(page).to have_text("Guess!")
+    expect(page).to have_text("Attempt: 4/4")
+    expect(page).to have_text("Attempt 3: #{passcode_colors[0]}, #{passcode_colors[1]}, #{passcode_colors[2]}, #{passcode_colors[0]}")
+    expect(page).to have_text("Your guess")
+
+    select select_values[0], from: "color-1"
+    select select_values[1], from: "color-2"
+    select select_values[2], from: "color-3"
+    select select_values[0], from: "color-4"
+
+    click_on "Check"
+
+    expect(page).to have_text("You lost, ran out of turns.")
+
   end
 end

@@ -8,10 +8,8 @@ require "./app/controllers/games_controller"
 
 class WebSubmitComponent < ViewComponent::Base
   include ChancesAndGuesses
-  def initialize(game:, codebreaker:, codemaker:)
+  def initialize(game:)
     @game = game
-    @codebreaker = codebreaker
-    @codemaker = codemaker
   end
 
   attr_reader :game
