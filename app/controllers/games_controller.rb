@@ -70,13 +70,7 @@ class GamesController < ApplicationController
     if session[:current_player_id]
       @player = Player.find(session[:current_player_id])
       game = Game.find(params[:id])
-      codebreaker = Codebreaker.find_by(game: game)
-      codemaker = Codemaker.find_by(game: game)
-      @component = WebSubmitComponent.new(
-        game: game,
-        codebreaker: codebreaker,
-        codemaker: codemaker
-      )
+      @component = WebSubmitComponent.new(game: game)
     end
   end
 
