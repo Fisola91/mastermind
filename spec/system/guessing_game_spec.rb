@@ -259,4 +259,28 @@ RSpec.describe "guessing game" do
 
     expect(page).to have_text("Incorrect guess.")
   end
+
+  it "allows a player to get an invalid input as a reponse" do
+    visit "/"
+    click_on "codebreaker"
+    fill_in "player name", with: "Tester"
+    click_on "Start player session"
+    expect(page).to have_content("You are playing as Tester")
+    click_on "codebreaker"
+    expect(page).to have_content("Guess!")
+    expect(page).to have_content("Attempt: 1/4")
+    expect(page).to have_content("Your guess")
+
+    passcode_colors = JSON.parse(Game.last.passcode)
+    select_values = passcode_colors.map(&:downcase)
+
+    select select_values[1], from: "color-1"
+    select select_values[2], from: "color-2"
+    select select_values[0], from: "color-3"
+
+
+    click_on "Check"
+
+    expect(page).to have_content("Invalid attempt: contains unknown color")
+  end
 end
