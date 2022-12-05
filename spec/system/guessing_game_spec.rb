@@ -283,4 +283,50 @@ RSpec.describe "guessing game" do
 
     expect(page).to have_content("Invalid attempt: contains unknown color")
   end
+
+  it "allows a player to play and guess two colors at the wrong position on second attempt" do
+    visit "/"
+    click_on "codebreaker"
+    fill_in "player name", with: "Tester"
+    click_on "Start player session"
+    expect(page).to have_content("You are playing as Tester")
+    click_on "codebreaker"
+    expect(page).to have_content("Guess!")
+    expect(page).to have_content("Attempt: 1/4")
+    expect(page).to have_content("Your guess")
+
+    passcode_colors = JSON.parse(Game.last.passcode)
+    select_values = passcode_colors.map(&:downcase)
+
+    valid_colors = ValidColor.select(:colors).first[:colors]
+    select_colors = valid_colors.map(&:downcase)
+
+    color_difference = select_colors - select_values
+    color_difference_upcase = color_difference.map(&:upcase)
+
+    select select_values[1], from: "color-1"
+    select color_difference[0], from: "color-2"
+    select color_difference[0], from: "color-3"
+    select color_difference[1], from: "color-4"
+
+    click_on "Check"
+
+    expect(page).to have_content("One color guessed at the wrong position.")
+    expect(page).to have_text("You are playing as Tester")
+    expect(page).to have_text("Guess!")
+    expect(page).to have_text("Attempt: 2/4")
+    expect(page).to have_text("Attempt 1: #{passcode_colors[1]}, #{color_difference_upcase[0]}, #{color_difference_upcase[0]}, #{color_difference_upcase[1]}")
+    expect(page).to have_text("Your guess")
+
+    select select_values[1], from: "color-1"
+    select select_values[0], from: "color-2"
+    select color_difference[0], from: "color-3"
+    select color_difference[1], from: "color-4"
+
+    click_on "Check"
+
+    expect(page).to have_content("Two colors guessed at the wrong position.")
+  end
+
+
 end
