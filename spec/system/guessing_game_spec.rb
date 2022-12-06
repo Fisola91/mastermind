@@ -410,7 +410,7 @@ RSpec.describe "guessing game" do
     expect(page).to have_text("Four colors guessed at the wrong position.")
   end
 
-  it "allows a player to play and guess one exact and one wrong colors on first attempt" do
+  it "allows a player to play and guess one exact and one wrong color on first attempt" do
     visit "/"
     click_on "codebreaker"
     fill_in "player name", with: "Tester"
