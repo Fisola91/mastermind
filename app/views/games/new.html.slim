@@ -1,6 +1,5 @@
 h2 Code Maker
-p = "Pick four of these colors (red orange yellow green blue purple) to make a secret code."
-p = "The color should be spaced without quotation marks. For example your 4 secret code can be 'red orange yellow blue' "
+p = "Pick four of these colors %w(RED ORANGE YELLOW GREEN BLUE PURPLE) to make a secret code."
 
 = form_with url: player_passcode_games_path, method: :post, class: "pb2", html: { "data-turbo" => false } do |f|
   = f.label :passcode
