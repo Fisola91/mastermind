@@ -49,6 +49,8 @@ class GamesController < ApplicationController
       else
         render plain: "You must enter unique set of colors."
       end
+    else
+      redirect_to new_session_path
     end
   end
 
