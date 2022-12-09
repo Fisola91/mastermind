@@ -1,0 +1,20 @@
+name: Tests
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      RAILS_ENV: test
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - name: Create DB
+        run: bin/rails db:create db:schema:load
+      - name: Run tests
+        run: |
+          bundle exec rspec
