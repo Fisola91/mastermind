@@ -4,7 +4,7 @@ class ComputerGuesser
     @previous_guesses = previous_guesses
   end
 
-  def guess(passcode)
+  def guess
     updated_computer_guess = [" ", " ", " ", " "]
     if guess_count == 1
       if last_feedback == [:exact]
@@ -17,8 +17,8 @@ class ComputerGuesser
         ]
       end
     else
-      last_guess.each_with_index do |color, idx|
-        if passcode[idx] == color
+      second_last_guess.each_with_index do |color, idx|
+        if last_guess[idx] == color
           updated_computer_guess[idx] = color
         end
       end
@@ -26,7 +26,6 @@ class ComputerGuesser
     updated_computer_guess.each_with_index do |value, idx|
       last_guess[idx] = value if value != " "
     end
-
     case last_feedback
     when [:exact, :exact]
       untried_color = VALID_COLORS - last_guess
@@ -44,8 +43,30 @@ class ComputerGuesser
         last_guess[2],
         untried_color[1]
       ]
+    when [:exact, :exact, :exact, :exact]
+      return[
+        last_guess[0],
+        last_guess[1],
+        last_guess[2],
+        last_guess[3]
+      ]
+    when []
+      untried_color = VALID_COLORS - last_guess
+      return[
+        untried_color[0],
+        untried_color[0],
+        untried_color[1],
+        untried_color[1]
+      ]
+    when [:exact, :exact, :partial, :partial]
+      untried_color = VALID_COLORS - last_guess
+      return[
+        last_guess[0],
+        last_guess[2],
+        untried_color[3],
+        untried_color[1]
+      ]
     end
-
   end
 
   private

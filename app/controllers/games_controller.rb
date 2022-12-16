@@ -33,19 +33,7 @@ class GamesController < ApplicationController
         )
 
         while game.attempts.count < ChancesAndGuesses::CHANCES
-          if game.attempts.count == 0
-            guess = ValidColor.passcode.map(&:upcase)
-          else
-            guess.each_with_index do |color, idx|
-              if passcode_colors[idx] == color
-                updated_computer_guess[idx] = color
-              end
-            end
-          end
           guess = ValidColor.passcode.map(&:upcase)
-          updated_computer_guess.each_with_index do |value, idx|
-            guess[idx] = value if value != " "
-          end
 
           Attempt.create!(
             game: game,
