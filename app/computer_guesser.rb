@@ -26,6 +26,7 @@ class ComputerGuesser
     updated_computer_guess.each_with_index do |value, idx|
       last_guess[idx] = value if value != " "
     end
+
     case last_feedback
     when [:exact, :exact]
       untried_color = VALID_COLORS - last_guess
@@ -72,7 +73,7 @@ class ComputerGuesser
 
   private
 
-  attr_reader :previous_guesses, :passcode
+  attr_reader :previous_guesses
 
   def untried
     color_difference = VALID_COLORS - last_guess
