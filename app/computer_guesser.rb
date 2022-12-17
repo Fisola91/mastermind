@@ -6,81 +6,109 @@ class ComputerGuesser
 
   def guess
     updated_computer_guess = [" ", " ", " ", " "]
-    if guess_count == 1
-      if last_feedback == [:exact]
-        untried_color = VALID_COLORS - last_guess
-        return [
-          last_guess[0],
-          untried_color[0],
-          untried_color[1],
-          last_guess[1]
-        ]
+    case guess_count
+    when 1
+      case last_feedback
+      when [:exact]
+        return one_exact_color
       end
     else
-      second_last_guess.each_with_index do |color, idx|
-        if last_guess[idx] == color
-          updated_computer_guess[idx] = color
-        end
-      end
+      update_for(updated_computer_guess)
     end
-    updated_computer_guess.each_with_index do |value, idx|
-      last_guess[idx] = value if value != " "
-    end
-    case last_feedback
-    when [:exact, :exact]
-      untried_color = VALID_COLORS - last_guess
-      return[
-        last_guess[0],
-        last_guess[1],
-        untried_color[1],
-        last_guess[2]
-      ]
-    when [:exact, :exact, :exact]
-      untried_color = VALID_COLORS - last_guess
-      return[
-        last_guess[0],
-        last_guess[1],
-        last_guess[2],
-        untried_color[1]
-      ]
-    when [:exact, :exact, :exact, :exact]
-      return[
-        last_guess[0],
-        last_guess[1],
-        last_guess[2],
-        last_guess[3]
-      ]
-    when []
-      untried_color = VALID_COLORS - last_guess
-      return[
-        untried_color[0],
-        untried_color[0],
-        untried_color[1],
-        untried_color[1]
-      ]
-    when [:exact, :exact, :partial, :partial]
-      untried_color = VALID_COLORS - last_guess
-      return[
-        last_guess[0],
-        last_guess[2],
-        untried_color[3],
-        untried_color[1]
-      ]
-    end
+    updated_last_guess(updated_computer_guess)
+    feedbacks
   end
 
   private
 
   attr_reader :previous_guesses
 
-  def untried
-    color_difference = VALID_COLORS - last_guess
+  def feedbacks
+    case last_feedback
+    when [:exact, :exact]
+      two_exact_colors
+    when [:exact, :exact, :exact]
+      three_exact_colors
+    when [:exact, :exact, :exact, :exact]
+      four_exact_colors
+    when []
+      four_untried_colors
+    when [:exact, :exact, :partial, :partial]
+      two_partial_two_exact_colors
+    end
+  end
+
+  def one_exact_color
     [
       last_guess[0],
-      color_difference[0],
-      color_difference[1],
+      untried_color[0],
+      untried_color[1],
       last_guess[1]
     ]
+  end
+
+  def two_exact_colors
+    [
+      last_guess[0],
+      last_guess[1],
+      untried_color[1],
+      last_guess[2]
+    ]
+  end
+
+  def three_exact_colors
+    [
+      last_guess[0],
+      last_guess[1],
+      last_guess[2],
+      untried_color[1]
+    ]
+  end
+
+  def four_exact_colors
+    [
+      last_guess[0],
+      last_guess[1],
+      last_guess[2],
+      last_guess[3]
+    ]
+  end
+
+  def two_partial_two_exact_colors
+    [
+      last_guess[0],
+      last_guess[2],
+      untried_color[3],
+      untried_color[1]
+    ]
+  end
+
+  def four_untried_colors
+    [
+      untried_color[0],
+      untried_color[0],
+      untried_color[1],
+      untried_color[1]
+    ]
+  end
+
+  def update_for(updated_computer_guess)
+    second_last_guess.each_with_index do |color, idx|
+      if last_guess[idx] == color
+        updated_computer_guess[idx] = color
+      end
+    end
+    updated_computer_guess
+  end
+
+  def updated_last_guess(updated_computer_guess)
+    updated_computer_guess.each_with_index do |value, idx|
+      last_guess[idx] = value if value != " "
+    end
+  end
+
+  def untried_color
+    VALID_COLORS - last_guess
   end
 
   def guess_count
