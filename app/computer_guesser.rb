@@ -5,18 +5,17 @@ class ComputerGuesser
   end
 
   def guess
-    updated_computer_guess = [" ", " ", " ", " "]
     case guess_count
     when 1
       case last_feedback
       when [:exact]
-        return one_exact_color
+        one_exact_color
+      when []
+        four_untried_colors
       end
     else
-      update_for(updated_computer_guess)
+      feedbacks
     end
-    updated_last_guess(updated_computer_guess)
-    feedbacks
   end
 
   private
@@ -31,8 +30,6 @@ class ComputerGuesser
       three_exact_colors
     when [:exact, :exact, :exact, :exact]
       four_exact_colors
-    when []
-      four_untried_colors
     when [:exact, :exact, :partial, :partial]
       two_partial_two_exact_colors
     end
@@ -90,21 +87,6 @@ class ComputerGuesser
       untried_color[1],
       untried_color[1]
     ]
-  end
-
-  def update_for(updated_computer_guess)
-    second_last_guess.each_with_index do |color, idx|
-      if last_guess[idx] == color
-        updated_computer_guess[idx] = color
-      end
-    end
-    updated_computer_guess
-  end
-
-  def updated_last_guess(updated_computer_guess)
-    updated_computer_guess.each_with_index do |value, idx|
-      last_guess[idx] = value if value != " "
-    end
   end
 
   def untried_color
