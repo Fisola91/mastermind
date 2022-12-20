@@ -31,19 +31,22 @@ class GamesController < ApplicationController
           name: "Computer"
         )
 
-        while game.attempts.count < ChancesAndGuesses::CHANCES
-          guess = ValidColor.passcode
+        puts "WE WILL IMPLEMENT COMPUTER GUESSING HERE"
+        ComputerGuess.new(game: game, player: computer_player).run
 
-          Attempt.create!(
-            game: game,
-            player: computer_player,
-            values: guess
-          )
+        # while game.attempts.count < ChancesAndGuesses::CHANCES
+        #   guess = ValidColor.passcode
 
-          if guess == passcode
-            break
-          end
-        end
+        #   Attempt.create!(
+        #     game: game,
+        #     player: computer_player,
+        #     values: guess
+        #   )
+
+        #   if guess == passcode
+        #     break
+        #   end
+        # end
 
         redirect_to game_path(game)
       else
