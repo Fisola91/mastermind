@@ -101,10 +101,6 @@ class ComputerGuesser
     previous_guesses.last.guess
   end
 
-  def second_last_guess
-    previous_guesses[-2].guess
-  end
-
   def last_feedback
     previous_guesses.last.feedback
   end
