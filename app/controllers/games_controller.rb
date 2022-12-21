@@ -15,7 +15,8 @@ class GamesController < ApplicationController
   end
 
   def player_passcode
-    # computer_tries = []
+    updated_computer_guess = [" ", " ", " ", " "]
+
     if session[:current_player_id]
       player = Player.find(session[:current_player_id])
       passcode = params[:passcode].upcase.split(" ").to_s
@@ -32,7 +33,7 @@ class GamesController < ApplicationController
         )
 
         while game.attempts.count < ChancesAndGuesses::CHANCES
-          guess = ValidColor.passcode
+          guess = ValidColor.passcode.map(&:upcase)
 
           Attempt.create!(
             game: game,
@@ -40,8 +41,8 @@ class GamesController < ApplicationController
             values: guess
           )
 
-          if guess == passcode
-            break
+          if guess == passcode_colors
+            return "Congratulations!"
           end
         end
 

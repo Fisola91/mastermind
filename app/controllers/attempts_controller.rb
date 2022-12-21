@@ -9,7 +9,6 @@ class AttemptsController < ApplicationController
       guess = params[:guess]
       p guess
 
-
       begin
         ValidateInput.call(guess)
       rescue UnknownColorError
