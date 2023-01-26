@@ -15,7 +15,6 @@ class GamesController < ApplicationController
   end
 
   def player_passcode
-    # computer_tries = []
     if session[:current_player_id]
       player = Player.find(session[:current_player_id])
       passcode = params[:passcode].upcase.split(" ").to_s
@@ -75,24 +74,3 @@ class GamesController < ApplicationController
       @component = WebSubmitComponent.new(game: game)
     end
   end
-
-  private
-
-  # Still keep this logic here
-  def computer_guesses
-    computer_tries = []
-    4.times { computer_tries << ValidColor.passcode }
-    computer_tries.each do |computer_generated_code|
-      computer_generated_code
-    end
-  end
-
-  # 1. When you submit your code, that is when the crete action in the attempt controller get activated
-
-  # PSEUDOCODE
-  # 1. When player set code, redirect to the show page where the attempt will be made
-  # 2. Automatic selection for each attempt
-  # 2.b Auto click when a form is filled
-  # 3. Each attempt should give a feedback before moving to the next attempt.
-  # 4. Repeat this untill the chances is exhausted or computer guesses the code rightly
-end
