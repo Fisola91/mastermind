@@ -74,3 +74,4 @@ class GamesController < ApplicationController
       @component = WebSubmitComponent.new(game: game)
     end
   end
+end

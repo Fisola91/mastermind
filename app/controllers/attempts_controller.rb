@@ -7,8 +7,6 @@ class AttemptsController < ApplicationController
       player = Player.find(session[:current_player_id])
       game = Game.find(params[:game_id])
       guess = params[:guess]
-      p guess
-
 
       begin
         ValidateInput.call(guess)

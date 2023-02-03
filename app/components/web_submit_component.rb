@@ -35,7 +35,7 @@ class WebSubmitComponent < ViewComponent::Base
   end
 
   def passcode
-    JSON.parse(game.passcode)
+    JSON.parse(game.passcode.upcase)
   end
 
   def chances
