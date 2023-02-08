@@ -8,6 +8,7 @@ class AttemptsController < ApplicationController
       game = Game.find(params[:game_id])
       guess = params[:guess]
       p guess
+      p game
 
 
       begin
@@ -23,6 +24,7 @@ class AttemptsController < ApplicationController
         player: player,
         values: guess
       )
+      # binding.pry
 
       redirect_to game_path(game)
     else

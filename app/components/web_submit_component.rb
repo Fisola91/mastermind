@@ -52,8 +52,9 @@ class WebSubmitComponent < ViewComponent::Base
     elsif ran_out_of_attempts?
       "You lost, ran out of turns."
     else
-      turn = Turn.new(passcode: passcode)
-      result = turn.guess(last_guess)
+      # turn = Turn.new(passcode: passcode)
+      # result = turn.guess(last_guess)
+      result = calculate_score(last_guess, passcode)
       TurnMessage.for(result)
     end
   end

@@ -56,11 +56,12 @@ class GamesController < ApplicationController
   def create
     if session[:current_player_id]
       player = Player.find(session[:current_player_id])
-      game = Game.create!(passcode: ValidColor.passcode)
+      game = Game.create!(passcode: ValidColor.passcode.map(&:upcase))
       codebreaker = Codebreaker.create!(
         player: player,
         game: game
       )
+
       redirect_to game_path(game)
     else
       redirect_to new_session_path
@@ -74,3 +75,4 @@ class GamesController < ApplicationController
       @component = WebSubmitComponent.new(game: game)
     end
   end
+end
