@@ -1,4 +1,6 @@
 require "pry"
+require "./app/minimax"
+require "./app/constant_variable"
 class GamesController < ApplicationController
   def index
     if session[:current_player_id]
@@ -31,16 +33,16 @@ class GamesController < ApplicationController
         )
 
         while game.attempts.count < ChancesAndGuesses::CHANCES
-          guess = ValidColor.passcode
-
+          @guess = MiniMax.new(passcode: passcode_colors).play
+          # end
           Attempt.create!(
             game: game,
             player: computer_player,
-            values: guess
+            values: @guess
           )
 
-          if guess == passcode
-            break
+          if @guess == passcode
+            "break"
           end
         end
 
@@ -61,6 +63,7 @@ class GamesController < ApplicationController
         player: player,
         game: game
       )
+      p game
 
       redirect_to game_path(game)
     else

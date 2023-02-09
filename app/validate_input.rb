@@ -10,7 +10,7 @@ class ValidateInput
       raise UnknownColorError
     end
 
-    if colors.length != CHANCES
+    if colors.length != 4
       raise NumberOfColorsError
     end
   end
