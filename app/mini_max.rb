@@ -1,6 +1,6 @@
 require_relative "web_ui"
 require_relative "turn"
-# require "valid_color"
+
 class MiniMax
   attr_reader :passcode
   def initialize(passcode:, colors: WebUI.new.colors.map(&:upcase))
@@ -22,11 +22,9 @@ class MiniMax
       if @all_passcodes.include?(@guess)
         @guesses += 1
         @score = Turn.new(passcode: passcode).guess(@guess)
+        # p @guesses, @guess, passcode
         if @score == [:exact, :exact, :exact, :exact]
-          p @guesses, @guess, passcode
           break
-        else
-          p @guesses, @guess, passcode
         end
       end
     end

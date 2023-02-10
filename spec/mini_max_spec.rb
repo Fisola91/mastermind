@@ -1,4 +1,4 @@
-require_relative "../app/minimax"
+require_relative "../app/mini_max"
 
 RSpec.describe MiniMax do
   let(:passcode) {
