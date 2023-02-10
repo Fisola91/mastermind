@@ -1,5 +1,5 @@
 require "pry"
-require "./app/minimax"
+require "./app/mini_max"
 require "./app/constant_variable"
 class GamesController < ApplicationController
   def index
