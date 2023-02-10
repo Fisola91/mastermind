@@ -3,9 +3,8 @@ require_relative "turn"
 # require "valid_color"
 class MiniMax
   attr_reader :passcode
-  def initialize(passcode:)
+  def initialize(passcode:, colors: WebUI.new.colors.map(&:upcase))
     @passcode = passcode
-    colors = WebUI.new.colors.map(&:upcase)
     @all_passcodes = colors.product(*[colors]*3)
     @all_scores = Hash.new { |h, k| h[k] = {} }
 
@@ -40,9 +39,9 @@ class MiniMax
         @all_scores[@guess][passcode] == @score
       end
       guesses = @possible_scores.map do |guess, scores_by_passcode|
-        scores_by_passcode = scores_by_passcode.select do |passcode, score|
-          @possible_passcodes.include?(passcode)
-        end
+        filtered_passcodes = scores_by_passcode.keys & @possible_passcodes
+        scores_by_passcode = scores_by_passcode.slice(*filtered_passcodes)
+
         @possible_scores[guess] = scores_by_passcode
 
         score_groups = scores_by_passcode.values.group_by(&:itself)
@@ -57,7 +56,3 @@ class MiniMax
     end
   end
 end
-passcode = ["YELLOW", "GREEN", "BLUE", "RED"]
-
-a = MiniMax.new(passcode: passcode).play
-p a
