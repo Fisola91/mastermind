@@ -5,7 +5,7 @@ RSpec.describe MiniMax do
     %w(RED RED GREEN GREEN)
   }
   let(:colors) {
-    %w(RED GREEN BLUE)
+    %w(RED ORANGE YELLOW GREEN BLUE PURPLE)
   }
 
   describe "#initialize" do
@@ -18,7 +18,7 @@ RSpec.describe MiniMax do
     ]
     passcodes.each do |passcode|
       it "guesses #{passcode.join(' ')} correctly" do
-        instance = described_class.new(passcode: passcode, colors: colors)
+        instance = described_class.new(passcode: passcode, combinator: colors)
         expect(instance.play).to eq passcode
       end
     end

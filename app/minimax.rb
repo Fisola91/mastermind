@@ -1,38 +1,17 @@
 require_relative "web_ui"
 require_relative "turn"
-
-class Combinator
-  def initialize(colors)
-    @colors = colors
-  end
-
-  def all_passcodes
-    @all_passcodes ||= colors.product(*[colors]*3)
-  end
-
-  def all_scores
-    @all_scores ||= begin
-      result = Hash.new { |h, k| h[k] = {} }
-      all_passcodes.product(all_passcodes).each do |guess, passcode|
-        result[guess][passcode] = Turn.new(passcode: passcode).guess(guess)
-      end
-      result
-    end
-  end
-
-  private
-
-  attr_reader :colors
-end
-
+# require "valid_color"
 class MiniMax
   attr_reader :passcode
-  def initialize(passcode:, combinator:)
+  def initialize(passcode:)
     @passcode = passcode
     colors = WebUI.new.colors.map(&:upcase)
-    combinator = Combinator.new(colors)
-    @all_passcodes = combinator.all_passcodes
-    @all_scores = combinator.all_scores
+    @all_passcodes = colors.product(*[colors]*3)
+    @all_scores = Hash.new { |h, k| h[k] = {} }
+
+    @all_passcodes.product(@all_passcodes).each do |guess, passcode|
+      @all_scores[guess][passcode] = Turn.new(passcode: passcode).guess(guess)
+    end
   end
 
   def play
@@ -44,9 +23,11 @@ class MiniMax
       if @all_passcodes.include?(@guess)
         @guesses += 1
         @score = Turn.new(passcode: passcode).guess(@guess)
-        # p @guesses, @guess, passcode
         if @score == [:exact, :exact, :exact, :exact]
+          p @guesses, @guess, passcode
           break
+        else
+          p @guesses, @guess, passcode
         end
       end
     end
@@ -59,9 +40,9 @@ class MiniMax
         @all_scores[@guess][passcode] == @score
       end
       guesses = @possible_scores.map do |guess, scores_by_passcode|
-        filtered_passcodes = scores_by_passcode.keys & @possible_passcodes
-        scores_by_passcode = scores_by_passcode.slice(*filtered_passcodes)
-
+        scores_by_passcode = scores_by_passcode.select do |passcode, score|
+          @possible_passcodes.include?(passcode)
+        end
         @possible_scores[guess] = scores_by_passcode
 
         score_groups = scores_by_passcode.values.group_by(&:itself)
@@ -76,3 +57,6 @@ class MiniMax
     end
   end
 end
+passcode = ["YELLOW", "GREEN", "BLUE", "RED"]
+a = MiniMax.new(passcode: passcode).play
+p a
