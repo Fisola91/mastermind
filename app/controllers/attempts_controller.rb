@@ -7,9 +7,6 @@ class AttemptsController < ApplicationController
       player = Player.find(session[:current_player_id])
       game = Game.find(params[:game_id])
       guess = params[:guess]
-      p guess
-      p game
-
 
       begin
         ValidateInput.call(guess)
@@ -24,7 +21,6 @@ class AttemptsController < ApplicationController
         player: player,
         values: guess
       )
-      # binding.pry
 
       redirect_to game_path(game)
     else

@@ -34,7 +34,7 @@ class GamesController < ApplicationController
 
         while game.attempts.count < ChancesAndGuesses::CHANCES
           @guess = MiniMax.new(passcode: passcode_colors).play
-          # end
+
           Attempt.create!(
             game: game,
             player: computer_player,
@@ -63,7 +63,6 @@ class GamesController < ApplicationController
         player: player,
         game: game
       )
-      p game
 
       redirect_to game_path(game)
     else

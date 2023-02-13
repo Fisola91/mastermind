@@ -44,7 +44,6 @@ class MiniMax
       if @all_passcodes.include?(@guess)
         @guesses += 1
         @score = Turn.new(passcode: passcode).guess(@guess)
-        # p @guesses, @guess, passcode
         if @score == [:exact, :exact, :exact, :exact]
           break
         end
