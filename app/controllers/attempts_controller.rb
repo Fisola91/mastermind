@@ -1,7 +1,6 @@
 require "./app/validate_input"
 class AttemptsController < ApplicationController
-  def player_guesser
-  end
+
   def create
     if session[:current_player_id]
       player = Player.find(session[:current_player_id])
@@ -27,5 +26,4 @@ class AttemptsController < ApplicationController
       render status: :unauthorized
     end
   end
-
 end

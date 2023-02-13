@@ -54,7 +54,6 @@ class WebSubmitComponent < ViewComponent::Base
     else
       turn = Turn.new(passcode: passcode)
       result = turn.guess(last_guess)
-      # result = calculate_score(last_guess, passcode)
       TurnMessage.for(result)
     end
   end
