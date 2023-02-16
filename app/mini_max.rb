@@ -1,4 +1,3 @@
-require_relative "web_ui"
 require_relative "turn"
 
 class Combinator
@@ -13,7 +12,8 @@ class Combinator
   def all_scores
     @all_scores ||= begin
       result = Hash.new { |h, k| h[k] = {} }
-      all_passcodes.product(all_passcodes).each do |guess, passcode|
+      all_products = all_passcodes.product(all_passcodes)
+      all_products.each do |guess, passcode|
         result[guess][passcode] = Turn.new(passcode: passcode).guess(guess)
       end
       result
@@ -27,10 +27,9 @@ end
 
 class MiniMax
   attr_reader :passcode, :guess_array
-  def initialize(passcode:, combinator:)
+  def initialize(passcode:, colors:)
     @guess_array = []
     @passcode = passcode
-    colors = WebUI.new.colors.map(&:upcase)
     combinator = Combinator.new(colors)
     @all_passcodes = combinator.all_passcodes
     @all_scores = combinator.all_scores

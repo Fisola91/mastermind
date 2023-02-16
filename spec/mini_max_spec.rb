@@ -18,7 +18,7 @@ RSpec.describe MiniMax do
     ]
     passcodes.each do |passcode|
       it "guesses #{passcode.join(' ')} correctly" do
-        instance = described_class.new(passcode: passcode, combinator: colors)
+        instance = described_class.new(passcode: passcode, colors: colors)
         instance.play
         expect(instance.guess_array.length).to be <= 5
         expect(instance.guess_array.last).to eq passcode

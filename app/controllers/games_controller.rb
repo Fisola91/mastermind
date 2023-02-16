@@ -33,7 +33,7 @@ class GamesController < ApplicationController
           name: "Computer"
         )
 
-        mini_max = MiniMax.new(passcode: passcode_colors, combinator: WebUI.new.colors.map(&:upcase))
+        mini_max = MiniMax.new(passcode: passcode_colors, colors: WebUI.new.colors.map(&:upcase))
         mini_max.play
         mini_max.guess_array.each do |guess|
           Attempt.create!(
