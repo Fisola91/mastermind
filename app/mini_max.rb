@@ -26,8 +26,9 @@ class Combinator
 end
 
 class MiniMax
-  attr_reader :passcode
+  attr_reader :passcode, :guess_array
   def initialize(passcode:, combinator:)
+    @guess_array = []
     @passcode = passcode
     colors = WebUI.new.colors.map(&:upcase)
     combinator = Combinator.new(colors)
@@ -43,13 +44,13 @@ class MiniMax
       @guess = make_guess
       if @all_passcodes.include?(@guess)
         @guesses += 1
+        @guess_array << @guess
         @score = Turn.new(passcode: passcode).guess(@guess)
         if @score == [:exact, :exact, :exact, :exact]
           break
         end
       end
     end
-    @guess
   end
 
   def make_guess

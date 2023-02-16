@@ -8,7 +8,7 @@ RSpec.describe MiniMax do
     %w(RED ORANGE YELLOW GREEN BLUE PURPLE)
   }
 
-  describe "#initialize" do
+  describe "#play" do
     passcodes = [
       %w(RED RED RED RED),
       %w(RED RED RED GREEN),

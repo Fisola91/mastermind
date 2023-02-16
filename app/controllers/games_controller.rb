@@ -1,6 +1,7 @@
 require "pry"
 require "./app/mini_max"
 require "./app/constant_variable"
+require "./app/web_ui"
 class GamesController < ApplicationController
   def index
     if session[:current_player_id]
@@ -27,28 +28,32 @@ class GamesController < ApplicationController
       )
       passcode_colors = JSON.parse(game.passcode)
 
-      if passcode_colors.uniq.length == 4
+      if passcode_colors.length == 4
         computer_player = Player.find_or_create_by!(
           name: "Computer"
         )
 
-        while game.attempts.count < ChancesAndGuesses::CHANCES
-          @guess = MiniMax.new(passcode: passcode_colors).play
-
+        mini_max = MiniMax.new(passcode: passcode_colors, combinator: WebUI.new.colors.map(&:upcase))
+        mini_max.play
+        mini_max.guess_array.each do |guess|
           Attempt.create!(
             game: game,
             player: computer_player,
-            values: @guess
+            values: guess
           )
-
-          if @guess == passcode
-            "break"
+          if guess == passcode_colors
+            break
           end
         end
-
         redirect_to game_path(game)
       else
-        render plain: "You must enter unique set of colors."
+        begin
+          ValidateInput.call(passcode_colors)
+        rescue UnknownColorError
+          return render plain: "Invalid attempt: contains unknown color"
+        rescue NumberOfColorsError
+          return render plain: "Invalid attempt: wrong number of colors submitted"
+        end
       end
     else
       redirect_to new_session_path
