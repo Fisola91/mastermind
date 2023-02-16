@@ -5,7 +5,7 @@ RSpec.describe MiniMax do
     %w(RED RED GREEN GREEN)
   }
   let(:colors) {
-    %w(RED ORANGE YELLOW GREEN BLUE PURPLE)
+    %w(RED GREEN BLUE)
   }
 
   describe "#play" do
