@@ -1,4 +1,7 @@
 require "pry"
+require "./app/mini_max"
+require "./app/constant_variable"
+require "./app/web_ui"
 class GamesController < ApplicationController
   def index
     if session[:current_player_id]
@@ -25,28 +28,32 @@ class GamesController < ApplicationController
       )
       passcode_colors = JSON.parse(game.passcode)
 
-      if passcode_colors.uniq.length == 4
+      if passcode_colors.length == 4
         computer_player = Player.find_or_create_by!(
           name: "Computer"
         )
 
-        while game.attempts.count < ChancesAndGuesses::CHANCES
-          guess = ValidColor.passcode
-
+        mini_max = MiniMax.new(passcode: passcode_colors, colors: WebUI.new.colors.map(&:upcase))
+        mini_max.play
+        mini_max.guess_array.each do |guess|
           Attempt.create!(
             game: game,
             player: computer_player,
             values: guess
           )
-
-          if guess == passcode
+          if guess == passcode_colors
             break
           end
         end
-
         redirect_to game_path(game)
       else
-        render plain: "You must enter unique set of colors."
+        begin
+          ValidateInput.call(passcode_colors)
+        rescue UnknownColorError
+          return render plain: "Invalid attempt: contains unknown color"
+        rescue NumberOfColorsError
+          return render plain: "Invalid attempt: wrong number of colors submitted"
+        end
       end
     else
       redirect_to new_session_path
@@ -56,11 +63,12 @@ class GamesController < ApplicationController
   def create
     if session[:current_player_id]
       player = Player.find(session[:current_player_id])
-      game = Game.create!(passcode: ValidColor.passcode)
+      game = Game.create!(passcode: ValidColor.passcode.map(&:upcase))
       codebreaker = Codebreaker.create!(
         player: player,
         game: game
       )
+
       redirect_to game_path(game)
     else
       redirect_to new_session_path
@@ -74,3 +82,4 @@ class GamesController < ApplicationController
       @component = WebSubmitComponent.new(game: game)
     end
   end
+end

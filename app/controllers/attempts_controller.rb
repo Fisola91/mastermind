@@ -1,14 +1,11 @@
 require "./app/validate_input"
 class AttemptsController < ApplicationController
-  def player_guesser
-  end
+
   def create
     if session[:current_player_id]
       player = Player.find(session[:current_player_id])
       game = Game.find(params[:game_id])
       guess = params[:guess]
-      p guess
-
 
       begin
         ValidateInput.call(guess)
@@ -29,5 +26,4 @@ class AttemptsController < ApplicationController
       render status: :unauthorized
     end
   end
-
 end
