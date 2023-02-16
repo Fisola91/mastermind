@@ -20,7 +20,6 @@ class AttemptsController < ApplicationController
         player: player,
         values: guess
       )
-
       redirect_to game_path(game)
     else
       render status: :unauthorized
