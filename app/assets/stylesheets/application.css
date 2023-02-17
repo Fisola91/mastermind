@@ -14,20 +14,51 @@
  *= require_self
  */
 
- .guess-rat {
+ .guess-rating-box {
   width: 40px;
   height: 40px;
+  border-width: 1px;
+  /* border-radius: ; */
+ }
+
+ .guess-rating {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  margin-left: 3px;
+  padding: 5px;
+  margin-top: 3px;
+  margin-bottom: 7px;
  }
 
  .inner-guess-cell {
-  width: 12px;
-  height: 12px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
   margin-right: 5px;
   margin-bottom: 5px;
  }
 
  .guess-cell {
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
   border-radius: 50%;
+ }
+
+ .colo-picker-check {
+  width: 50px;
+  height: 300px;
+ }
+
+ .guess-check {
+  width: 50px;
+  height: 50px;
+ }
+
+ .flexbox {
+  overflow: hidden;
+ }
+
+ .guess {
+  float: left;
  }
