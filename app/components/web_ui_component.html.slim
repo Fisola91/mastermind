@@ -27,8 +27,11 @@ h2 Here's how we imagine the UI in the future
               - code_length.times do |cell_number|
                 .guess-rating.ba.b--light-silver.dib.tc.br4.bg-black data-number=cell_number
                   =="&nbsp;"
-    .colo-picker-check.ba.b--black.flex
-      .color-picker.mt3
+    .colo-picker-check.ba.b--black.ml3
+      .color-picker
         - colors.each do |color|
-          .color.dib.w2.h2.br4.bw1.mr2.pointer data-color=color class="bg-#{color}"
+          .color.dib.br4.bw1.ml2.mt3.mr2.pointer data-color=color class="bg-#{color}"
             == "&nbsp;"
+      .guess-check.ba.b--black.ml3
+        .text.mt5.ml1
+          p Check

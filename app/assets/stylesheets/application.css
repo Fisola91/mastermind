@@ -18,7 +18,6 @@
   width: 40px;
   height: 40px;
   border-width: 1px;
-  /* border-radius: ; */
  }
 
  .guess-rating {
@@ -46,11 +45,24 @@
  }
 
  .colo-picker-check {
-  width: 50px;
-  height: 300px;
+  width: 70px;
+  height: 550px;
+ }
+
+ .color-picker {
+  margin-top: 190px;
+  margin-left: 12px;
  }
 
  .guess-check {
   width: 50px;
-  height: 50px;
+  height: 90px;
+  margin-top: 23px;
+  margin-left: 8px;
+ }
+
+ .color {
+  margin-top: 20px;
+  width: 20px;
+  height: 20px;
  }
