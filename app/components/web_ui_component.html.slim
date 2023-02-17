@@ -12,19 +12,20 @@ h2 Here's how we imagine the UI in the future
         = "?"
   - guess_attempts.times.reverse_each do |guess_number|
     .guess-row.flex data-number=guess_number
-      .guess-chances.mr3.mt3
+      .guess-chances.mr2.mt3
         = guess_number > 0 ? guess_number : break
-      .all-guess-cell.mr1.ml2
+      .all-guess-cell.mr2.ml2
         - code_length.times do |cell_number|
-          .guess-cell.ba.b--black.dib.w2.h2.ml2.mt2.tc data-number=cell_number
+          .guess-cell.ba.b--black.dib.ml2.mt2.tc.br4 data-number=cell_number
             == "&nbsp;"
-            .guess-cell.ba.b--black.dib.w1.h1.ml.mr1.mt2.tc data-number=cell_number
+            .inner-guess-cell.ba.b--black.dib.rc.mb2.mt2.tc.br4.bg-black data-number=cell_number
               == "&nbsp;"
       .guess-ratings.ml1.dib
-        - code_length.times do |cell_number|
-          .guess-rating.ba.b--light-silver.dib.w2.h2.tc data-number=cell_number
-            =="&nbsp;"
+        .guess-rat.ba.b--black.dib.mb3
+          - code_length.times do |cell_number|
+            .guess-rating.ba.b--light-silver.dib.w1.h1.tc.br4 data-number=cell_number
+              =="&nbsp;"
   .color-picker.mt3
     - colors.each do |color|
-      .color.dib.w2.h2.mr2.pointer data-color=color class="bg-#{color}"
+      .color.dib.w2.h2.br4.bw1.mr2.pointer data-color=color class="bg-#{color}"
         == "&nbsp;"

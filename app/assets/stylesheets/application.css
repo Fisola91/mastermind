@@ -13,3 +13,21 @@
  *= require_tree .
  *= require_self
  */
+
+ .guess-rat {
+  width: 40px;
+  height: 40px;
+ }
+
+ .inner-guess-cell {
+  width: 12px;
+  height: 12px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+ }
+
+ .guess-cell {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+ }
