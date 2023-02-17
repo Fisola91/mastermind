@@ -44,6 +44,7 @@ gem "bootsnap", require: false
 gem "slim-rails"
 gem "view_component"
 gem "pry"
+gem 'font-awesome-sass'
 
 # Use Sass to process CSS
 # gem "sassc-rails"
