@@ -6,15 +6,15 @@
 
 h2 Here's how we imagine the UI in the future
 .board.ml3
-  .secret-row.flex.mb2.ml4
+  .secret-row.flex.mb2.ml5
     - code_length.times do |i|
-      .secret-cell.ba.b--black.dib.w2.h2.tc data-number=i
+      .secret-cell.ba.b--black.dib.w2.h2.tc.mt4 data-number=i
         = "?"
-  .flex
+  .flex.mt4
     div
       - guess_attempts.times.reverse_each do |guess_number|
         .guess-row.flex data-number=guess_number
-          .guess-chances.mr2.mt3
+          .guess-chances.mr2.mt3.ml3
             = guess_number
           .all-guess-cell.mr2.ml2.mt1
             - code_length.times do |cell_number|
@@ -32,7 +32,7 @@ h2 Here's how we imagine the UI in the future
         - colors.each do |color|
           .color.dib.br4.bw1.ml2.mt3.mr2.pointer data-color=color class="bg-#{color}"
             == "&nbsp;"
-      .guess-check.ba.b--black.ml3
+      .guess-check.ba.b--black.ml3.mr2
         .text.mt5.ml1
           i.fa-light.fa-check
           p Check
