@@ -30,6 +30,10 @@
   width: 40px;
   height: 40px;
   border-width: 1px;
+  border-radius: 4px;
+  border: 2px solid rgba(142, 141, 141, 0.4);
+  border-block-end-color:  rgb(91, 56, 21);
+  border-inline-end-color:  rgb(91, 56, 21);
  }
 
  .guess-rating {
@@ -58,34 +62,39 @@
  }
 
  .colo-picker-check {
-  width: 70px;
+  width: 80px;
   height: 550px;
   border-radius: 6px;
-  border: 3px solid rgb(159, 156, 156);
+  border: 5px solid rgba(142, 141, 141, 0.3);
+  border-block-end-color:  rgb(91, 56, 21);
+  border-inline-end-color:  rgb(91, 56, 21);
  }
 
  .color-picker {
-  margin-top: 190px;
-  margin-left: 14px;
+  margin-top: 122px;
+  margin-left: 16px;
  }
 
  .guess-check {
   width: 55px;
   height: 90px;
-  margin-top: 21px;
-  margin-left: 6px;
+  margin-top: 22px;
+  margin-left: 8px;
   border-radius: 6px;
-  background-color: rgb(79, 50, 10)  ;
-  border: 3px solid rgb(243, 167, 61);
+  background-color: rgb(79, 50, 10);
+  border: 3px solid rgb(83, 62, 31);
   text-align: center;
  }
 
  .color {
   margin-top: 20px;
+  margin-bottom: 10px;
   width: 20px;
   height: 20px;
  }
 
  .text {
   color: white;
+  margin-top: 58px;
+
  }
