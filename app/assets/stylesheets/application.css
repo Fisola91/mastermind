@@ -19,7 +19,7 @@
   background-color: rgb(114, 70, 27);
   margin-right: 350px;
   margin-left: 0;
-  height: 700px
+  height: 800px
  }
 
  .secret-row {
@@ -48,17 +48,20 @@
  }
 
  .inner-guess-cell {
-  width: 9px;
-  height: 9px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
-  margin-right: 5px;
-  margin-bottom: 5px;
+  margin-right: 4px;
+  margin-top: 7px;
  }
 
  .guess-cell {
   width: 25px;
   height: 25px;
   border-radius: 50%;
+  border: 2px solid rgba(106, 67, 28, 0.9);
+  border-block-start-color:  #1b1b1b;
+  border-inline-start-color:  #1b1b1b;
  }
 
  .colo-picker-check {
@@ -96,5 +99,27 @@
  .text {
   color: white;
   margin-top: 58px;
+ }
 
+ .footer {
+  display: flex;
+  width: 355px;
+  margin-top: 80px;
+  background-color: black;
+ }
+
+ .menu {
+  background-color: black;
+  color: rgb(114, 70, 27);
+  font-weight: bold;
+  margin-top: 30px;
+  margin-left: 75px;
+ }
+
+ .new-game {
+  background-color: black;
+  color: rgb(114, 70, 27);
+  font-weight: bold;
+  margin-top: 30px;
+  margin-left: 45px;
  }
