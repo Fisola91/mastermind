@@ -8,6 +8,7 @@ class GamesController < ApplicationController
       @player = Player.find(session[:current_player_id])
     end
     @component = WebUiComponent.new
+    @game_board = GameBoardComponent.new
   end
 
   def new

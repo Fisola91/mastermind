@@ -19,7 +19,4 @@ class WebUiComponent < ViewComponent::Base
       purple
     )
   end
-  def number
-    (1..10).to_a
-  end
 end
