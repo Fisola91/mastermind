@@ -7,8 +7,20 @@ class GamesController < ApplicationController
     if session[:current_player_id]
       @player = Player.find(session[:current_player_id])
     end
-    # @component = WebUiComponent.new
-    @game_board = GameBoardComponent.new
+
+    game = Game.new(passcode: %w(red red green green))
+    attempts = [
+      Attempt.new(values: %w(blue yellow orange purple)), # nothing
+      Attempt.new(values: %w(blue yellow orange red)), # [:partial]
+      # Attempt.new(values: %w(red blue yellow orange)), # [:exact]
+      # Attempt.new(values: %w(red green blue yellow)), # [:partial, :exact]
+      # Attempt.new(values: %w(red red green blue)), # [:exact, :exact, :exact]
+      # Attempt.new(values: %w(red red green green)), # [:exact, :exact, :exact, :exact]
+    ]
+    @game_board = GameBoardComponent.new(
+      game: game,
+      attempts: attempts
+    )
   end
 
   def new
