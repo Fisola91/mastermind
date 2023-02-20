@@ -16,8 +16,8 @@ h2 Here's how we imagine the UI in the future
     div
       - guess_attempts.times.reverse_each do |guess_number|
         .guess-row.flex data-number=guess_number
-          .guess-chances.mr2.mt3.ml3
-            = guess_number
+          .guess-chances.mr2.mt3.ml2
+            = guess_number + 1
           .all-guess-cell.mr2.ml3.mt1
             - code_length.times do |cell_number|
               .guess-cell.ba.b--black.dib.ml3.mt2.tc.br4 data-number=cell_number
