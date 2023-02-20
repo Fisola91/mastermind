@@ -7,7 +7,7 @@ class GamesController < ApplicationController
     if session[:current_player_id]
       @player = Player.find(session[:current_player_id])
     end
-    @component = WebUiComponent.new
+    # @component = WebUiComponent.new
     @game_board = GameBoardComponent.new
   end
 
@@ -81,6 +81,7 @@ class GamesController < ApplicationController
       @player = Player.find(session[:current_player_id])
       game = Game.find(params[:id])
       @component = WebSubmitComponent.new(game: game)
+      binding.pry
     end
   end
 end

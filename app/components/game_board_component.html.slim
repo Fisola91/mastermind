@@ -1,1 +1,39 @@
-div Add GameBoard template here
+.board.ml3
+  .guess-time.flex
+    .secret-row.flex.mb2.ml5
+      - code_length.times do |i|
+        .secret-cell.ba.b--black.dib.w2.h2.tc.mt4 data-number=i
+          = "?"
+    p time
+  .flex.mt4
+    div
+      - guess_attempts.times.reverse_each do |guess_number|
+        .guess-row.flex data-number=guess_number
+          .guess-chances.mr2.mt3.ml2
+            = guess_number + 1
+          .all-guess-cell.mr2.ml3.mt1
+            - code_length.times do |cell_number|
+              .guess-cell.ba.b--black.dib.ml3.mt2.tc.br4 data-number=cell_number
+                == "&nbsp;"
+                .inner-guess-cell.ba.b--black.dib.rc.tc.bg-black data-number=cell_number
+                  == "&nbsp;"
+          .guess-ratings.ml4.dib
+            .guess-rating-box.ba.b--black.dib.mb3.br2
+              - code_length.times do |cell_number|
+                .guess-rating.ba.b--light-silver.dib.tc.br4.bg-black data-number=cell_number
+                  =="&nbsp;"
+    .colo-picker-check.ba.b--black.ml4
+      .color-picker
+        - colors.each do |color|
+          .color.dib.bw1.ml2.mt5.mr2.pointer data-color=color class="bg-#{color}"
+            == "&nbsp;"
+      .guess-check.ba.b--black.ml3.mr2
+        .text
+          h6 ✓
+        p Check
+  .footer.ba.b--black
+    = form_with url: games_path, method: :post, html: { "data-turbo" => false } do |f|
+      = f.submit "NEW GAME", class: "new-game"
+
+    = form_with url: games_path, method: :post, html: { "data-turbo" => false } do |f|
+      = f.submit "MENU", class: "menu"
