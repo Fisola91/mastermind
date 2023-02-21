@@ -20,8 +20,8 @@
           .guess-ratings.ml4.dib
             .guess-rating-box.ba.b--black.dib.mb3.br2
               - code_length.times do |cell_number|
-                .guess-rating.ba.b--light-silver.dib.tc.br4.bg-black data-number=cell_number
-                  =="&nbsp;"
+                div class=guess_rating(guess_number, cell_number) data-number=cell_number
+                  == "&nbsp;"
     .colo-picker-check.ba.b--black.ml4
       .color-picker
         - colors.each do |color|

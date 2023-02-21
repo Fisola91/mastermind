@@ -12,10 +12,8 @@ class GamesController < ApplicationController
     attempts = [
       Attempt.new(values: %w(blue yellow orange purple)), # nothing
       Attempt.new(values: %w(blue yellow orange red)), # [:partial]
-      # Attempt.new(values: %w(red blue yellow orange)), # [:exact]
-      # Attempt.new(values: %w(red green blue yellow)), # [:partial, :exact]
-      # Attempt.new(values: %w(red red green blue)), # [:exact, :exact, :exact]
-      # Attempt.new(values: %w(red red green green)), # [:exact, :exact, :exact, :exact]
+      Attempt.new(values: %w(red blue yellow orange)), # [:exact]
+      Attempt.new(values: %w(red yellow green purple))
     ]
     @game_board = GameBoardComponent.new(
       game: game,
