@@ -5,23 +5,30 @@ class TurnMessage
     elsif result == [:exact]
       "One color guessed at the exact position."
     elsif result == [:exact, :exact]
-      "Two colors guessed at the exact position."
+      # "Two colors guessed at the exact position."
+      ["green","green"]
     elsif result == [:exact, :exact, :exact]
-      "Three colors guessed at the exact position."
+      # "Three colors guessed at the exact position."
+      ["green","green","green"]
     elsif result == []
-      "Incorrect guess."
+      # "Incorrect guess."
+      []
     elsif result == [:partial, :partial, :partial, :partial]
-      "Four colors guessed at the wrong position."
+      # "Four colors guessed at the wrong position."
+      ["white","white","white","white"]
     elsif result == [:partial, :partial, :partial]
       "Three colors guessed at the wrong position."
     elsif result == [:partial, :partial]
       "Two colors guessed at the wrong position."
     elsif result == [:partial]
-      "One color guessed at the wrong position."
+      # "One color guessed at the wrong position."
+      ["white"]
     elsif result == [:exact, :partial]
-      "Two colors guessed, one at the exact position and one at the wrong position."
+      # "Two colors guessed, one at the exact position and one at the wrong position."
+      ["green", "white"]
     elsif result == [:exact, :exact, :partial]
-      "Three colors guessed, two at the exact position and one at the wrong position."
+      #"Three colors guessed, two at the exact position and one at the wrong position."
+      ["green","green","white"]
     elsif result == [:exact, :partial, :partial]
       "Three colors guessed, one at the exact position and two at the wrong position."
     elsif result == [:exact, :partial, :partial, :partial]

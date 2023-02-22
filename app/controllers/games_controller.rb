@@ -12,8 +12,11 @@ class GamesController < ApplicationController
     attempts = [
       Attempt.new(values: %w(blue yellow orange purple)), # nothing
       Attempt.new(values: %w(blue yellow orange red)), # [:partial]
-      Attempt.new(values: %w(red blue yellow orange)), # [:exact]
-      Attempt.new(values: %w(red yellow green purple))
+      Attempt.new(values: %w(red blue red orange)), # [:exact]
+      Attempt.new(values: %w(red yellow purple green)),
+      Attempt.new(values: %w(red yellow green green)),
+      Attempt.new(values: %w(red blue green red)),
+      Attempt.new(values: %w(green green red red))
     ]
     @game_board = GameBoardComponent.new(
       game: game,
@@ -91,7 +94,6 @@ class GamesController < ApplicationController
       @player = Player.find(session[:current_player_id])
       game = Game.find(params[:id])
       @component = WebSubmitComponent.new(game: game)
-      binding.pry
     end
   end
 end
