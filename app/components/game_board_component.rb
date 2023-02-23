@@ -35,7 +35,6 @@ class GameBoardComponent < ViewComponent::Base
     known_values.each_with_index do |known_value, idx|
       all_values[idx] = known_value
     end
-
     all_values
   end
 
