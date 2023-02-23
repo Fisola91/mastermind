@@ -4,18 +4,24 @@ require "rails_helper"
 
 RSpec.describe GameBoardComponent, type: :component do
   #pending "add some examples to (or delete) #{__FILE__}"
-  let(:passcode) { %w(red red green green)}
+  let(:game) {
+    Game.new(passcode: %w(red red green green).to_json)
+  }
   let(:attempts) {
     [
       Attempt.new(values: %w(blue yellow orange purple))
     ]
   }
-  let(:feedback) { GameBoardComponent.new(game: passcode, attempts: attempts )}
+  let(:feedback) { GameBoardComponent.new(game: game, attempts: attempts )}
 
   it "returns guess number 10 - 1" do
-    expect(feedback.guesses).to have_text((1..10).to_a.reverse)
-  end
+    render_inline feedback
 
+    aggregate_failures do
+      expect(page.find(".secret-row")).to have_text "????", exact: true
+      expect(page.all(".guess-chances").map(&:text)).to eq (1..10).to_a.map(&:to_s).reverse
+    end
+  end
 
   # feedback.code_length.times do |cell_number|
   #   it "returns an array of colors" do
