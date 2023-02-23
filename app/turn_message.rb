@@ -17,7 +17,7 @@ class TurnMessage
       # "Four colors guessed at the wrong position."
       ["white","white","white","white"]
     elsif result == [:partial, :partial, :partial]
-      "Three colors guessed at the wrong position."
+      "Three colors guessed at the wrong positi<on."
     elsif result == [:partial, :partial]
       "Two colors guessed at the wrong position."
     elsif result == [:partial]

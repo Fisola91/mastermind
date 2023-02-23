@@ -24,12 +24,16 @@ class GameBoardComponent < ViewComponent::Base
     passcode = JSON.parse(game.passcode)
     guess = attempt ? attempt.values : nil
     return "guess_rating ba b--light-silver dib tc br4 w1 h1 bg-black" if guess.nil?
+    feedback = feedback(passcode, guess, cell_number)
+    bg_class = feedback ? "bg-#{feedback}" : "bg-black"
+    "guess_rating ba b--light-silver dib tc br4 w1 h1 #{bg_class}"
+  end
+
+  def feedback(passcode, guess, cell_number)
     turn = Turn.new(passcode: passcode)
     result = turn.guess(guess)
     feedbacks = TurnMessage.for(result)
     feedback = feedbacks.delete_at(cell_number)
-    bg_class = feedback ? "bg-#{feedback}" : "bg-black"
-    "guess_rating ba b--light-silver dib tc br4 w1 h1 #{bg_class}"
   end
 
   def guess_attempts
@@ -52,5 +56,5 @@ class GameBoardComponent < ViewComponent::Base
   end
 
   attr_reader :attempts, :game
+
 end
-# .guess-rating.ba.b--light-silver.dib.tc.br4.bg-black data-number=cell_number
