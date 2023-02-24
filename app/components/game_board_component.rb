@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 require "json"
 require "./app/turn_message"
+require "./app/turn"
 
 class GameBoardComponent < ViewComponent::Base
   COLOR_CLASS_MAP = {
