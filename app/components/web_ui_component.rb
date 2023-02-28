@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class WebUiComponent < ViewComponent::Base
   def guess_attempts
     10

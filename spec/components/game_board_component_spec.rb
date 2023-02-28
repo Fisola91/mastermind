@@ -1,9 +1,7 @@
-# frozen_string_literal: true
 
 require "rails_helper"
 
 RSpec.describe GameBoardComponent, type: :component do
-  #pending "add some examples to (or delete) #{__FILE__}"
   let(:game) {
     Game.new(passcode: %w(red red green green).to_json)
   }
