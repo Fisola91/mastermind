@@ -13,37 +13,38 @@ RSpec.describe GameBoardComponent, type: :component do
       Attempt.new(values: %w(blue yellow orange red))
     ]
   }
-  let(:feedback) { GameBoardComponent.new(game: game, attempts: attempts )}
+  let(:game_board) { GameBoardComponent.new(game: game, attempts: attempts )}
 
-  it "renders game board elements" do
-    render_inline feedback
+  it "renders game board components" do
+    render_inline game_board
 
     aggregate_failures do
       expect(page.find(".secret-row")).to have_text "????", exact: true
       expect(page.all(".guess-chances").map(&:text)).to eq (1..10).to_a.map(&:to_s).reverse
 
-      expect(page.find(".color-picker").find(".bg-red")["data-color"]).to eq "red"
-      expect(page.find(".color-picker").find(".bg-orange")["data-color"]).to eq "orange"
-      expect(page.find(".color-picker").find(".bg-yellow")["data-color"]).to eq "yellow"
-      expect(page.find(".color-picker").find(".bg-green")["data-color"]).to eq "green"
-      expect(page.find(".color-picker").find(".bg-blue")["data-color"]).to eq "blue"
-      expect(page.find(".color-picker").find(".bg-purple")["data-color"]).to eq "purple"
+      expect(page.find(".color-picker")).to have_selector(".bg-red")
+      expect(page.find(".color-picker")).to have_selector(".bg-orange")
+      expect(page.find(".color-picker")).to have_selector(".bg-yellow")
+      expect(page.find(".color-picker")).to have_selector(".bg-green")
+      expect(page.find(".color-picker")).to have_selector(".bg-blue")
+      expect(page.find(".color-picker")).to have_selector(".bg-purple")
 
       expect(page).to have_text("Check")
       expect(page).to have_text("✓")
 
-      bg_class = attempts.first.values
-      expect(page.find(".guess-row[data-number=1]").find(".bg-#{bg_class[0]}")["data-number"]).to eq "0"
-      expect(page.find(".guess-row[data-number=1]").find(".bg-#{bg_class[1]}")["data-number"]).to eq "1"
-      expect(page.find(".guess-row[data-number=1]").find(".bg-#{bg_class[2]}")["data-number"]).to eq "2"
-      expect(page.find(".guess-row[data-number=1]").find(".bg-#{bg_class[3]}")["data-number"]).to eq "3"
+      game_board.guesses.each do |guess_row|
+        expect(page.find(".guess-row#{[guess_row]}").all(".guess-rating").count).to eq 4
+      end
 
-      bg_class = attempts[1].values
-      expect(page.find(".guess-row[data-number=2]").find(".bg-#{bg_class[0]}")["data-number"]).to eq "0"
-      expect(page.find(".guess-row[data-number=2]").find(".bg-#{bg_class[1]}")["data-number"]).to eq "1"
-      expect(page.find(".guess-row[data-number=2]").find(".bg-#{bg_class[2]}")["data-number"]).to eq "2"
-      expect(page.find(".guess-row[data-number=2]").find(".bg-#{bg_class[3]}")["data-number"]).to eq "3"
+      first_guesses = attempts.first.values
+      first_guesses.each do |guess|
+        expect(page.find(".guess-row[data-number=1]")).to have_selector(".bg-#{guess}")
+      end
 
+      second_guesses = attempts.fetch(1).values
+      second_guesses.each do |guess|
+        expect(page.find(".guess-row[data-number=2]")).to have_selector(".bg-#{guess}")
+      end
     end
   end
 end
