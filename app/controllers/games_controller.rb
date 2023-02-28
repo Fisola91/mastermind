@@ -1,5 +1,4 @@
 require "pry"
-require "./app/mini_max"
 require "./app/constant_variable"
 require "./app/web_ui"
 class GamesController < ApplicationController
