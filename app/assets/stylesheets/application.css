@@ -13,3 +13,137 @@
  *= require_tree .
  *= require_self
  */
+
+ .board {
+  background-color: rgb(114, 70, 27);
+  margin-right: 250px;
+  margin-left: 0;
+  height: 750px
+ }
+
+ .secret-row {
+  margin-left: 65px;
+ }
+
+ .guess-time p {
+  margin-left: 180px;
+  margin-top: 30px
+ }
+
+ .guess-chances {
+  font-size: larger;
+ }
+
+ .guess-rating-box {
+  width: 46px;
+  height: 46px;
+  border-radius: 4px;
+  border: 2px solid rgba(142, 141, 141, 0.4);
+  border-block-end-color:  rgb(91, 56, 21);
+  border-inline-end-color:  rgb(91, 56, 21);
+  display: grid;
+  padding: 6px;
+  grid-template-columns: 16px 16px;
+  grid-row: auto auto;
+  grid-column-gap: calc(46px - 12px * 2 - 20px);
+  grid-row-gap: calc(46px - 12px * 2 - 20px);
+ }
+
+ .guess-rating {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border-color: rgb(29, 28, 28);
+ }
+
+ .inner-guess-cell {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 4px;
+  margin-top: 7px;
+ }
+
+ .guess-cell {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  border: 2px solid rgba(106, 67, 28, 0.9);
+  border-block-start-color:  #1b1b1b;
+  border-inline-start-color:  #1b1b1b;
+ }
+
+ .colo-picker-check {
+  width: 80px;
+  height: 599px;
+  border-radius: 6px;
+  border: 5px solid rgba(142, 141, 141, 0.3);
+  border-block-end-color:  rgb(91, 56, 21);
+  border-inline-end-color:  rgb(91, 56, 21);
+ }
+
+ .color-picker {
+  margin-top: 122px;
+  margin-left: 16px;
+ }
+
+ .guess-check {
+  width: 55px;
+  height: 98px;
+  margin-top: 34px;
+  margin-left: 8px;
+  border-radius: 6px;
+  background-color: rgb(79, 50, 10);
+  border: 3px solid rgb(83, 62, 31);
+  text-align: center;
+ }
+
+ .guess-check:hover {
+  background-color: rgb(31, 19, 3);
+ }
+
+ .guess-check p {
+  color: white;
+  margin-top: 3px;
+  font-size: 15px;
+ }
+
+ .color {
+   margin-top: 20px;
+   margin-bottom: 10px;
+   border-radius: 50%;
+   width: 25px;
+   height: 25px;
+  }
+
+ .text {
+  color: rgb(237, 229, 229);
+  margin-top: 39px;
+ }
+
+ .footer {
+  display: flex;
+  width: 454px;
+  height: 40px;
+  margin-top: 20px;
+  background-color: black;
+  align-items: flex-end;
+ }
+
+ .menu {
+  background-color: black;
+  color: rgb(171, 110, 49);
+  font-weight: bold;
+  margin-top: 25px;
+  margin-left: 60px;
+  font-size: larger;
+ }
+
+ .new-game {
+  background-color: black;
+  color: rgb(171, 110, 49);
+  font-weight: bold;
+  margin-top: 29px;
+  font-size: larger;
+  margin-left: 60px;
+ }

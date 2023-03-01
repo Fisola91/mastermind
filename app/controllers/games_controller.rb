@@ -1,5 +1,4 @@
 require "pry"
-require "./app/mini_max"
 require "./app/constant_variable"
 require "./app/web_ui"
 class GamesController < ApplicationController
@@ -7,56 +6,27 @@ class GamesController < ApplicationController
     if session[:current_player_id]
       @player = Player.find(session[:current_player_id])
     end
-    @component = WebUiComponent.new
+
+    game = Game.new(passcode: %w(red red green green))
+    attempts = [
+      Attempt.new(values: %w(blue yellow orange purple)),
+      Attempt.new(values: %w(blue yellow orange red)),
+      Attempt.new(values: %w(red blue red orange)),
+      Attempt.new(values: %w(red yellow purple green)),
+      Attempt.new(values: %w(red yellow green green)),
+      Attempt.new(values: %w(red blue green red)),
+      Attempt.new(values: %w(green green red red))
+    ]
+    @game_board = GameBoardComponent.new(
+      game: game,
+      attempts: attempts
+    )
   end
 
   def new
     if session[:current_player_id]
       player = Player.find(session[:current_player_id])
       Game.new
-    end
-  end
-
-  def player_passcode
-    if session[:current_player_id]
-      player = Player.find(session[:current_player_id])
-      passcode = params[:passcode].upcase.split(" ").to_s
-      game = Game.create!(passcode: passcode)
-      codemaker = Codemaker.create!(
-        player: player,
-        game: game
-      )
-      passcode_colors = JSON.parse(game.passcode)
-
-      if passcode_colors.length == 4
-        computer_player = Player.find_or_create_by!(
-          name: "Computer"
-        )
-
-        mini_max = MiniMax.new(passcode: passcode_colors, colors: WebUI.new.colors.map(&:upcase))
-        mini_max.play
-        mini_max.guess_array.each do |guess|
-          Attempt.create!(
-            game: game,
-            player: computer_player,
-            values: guess
-          )
-          if guess == passcode_colors
-            break
-          end
-        end
-        redirect_to game_path(game)
-      else
-        begin
-          ValidateInput.call(passcode_colors)
-        rescue UnknownColorError
-          return render plain: "Invalid attempt: contains unknown color"
-        rescue NumberOfColorsError
-          return render plain: "Invalid attempt: wrong number of colors submitted"
-        end
-      end
-    else
-      redirect_to new_session_path
     end
   end
 
