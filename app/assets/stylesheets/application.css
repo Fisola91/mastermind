@@ -59,6 +59,7 @@
  .inner-guess-cell {
   width: 8px;
   height: 8px;
+  border: none;
   border-radius: 50%;
   margin-right: 4px;
   margin-top: 7px;
