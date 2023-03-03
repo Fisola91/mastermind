@@ -15,7 +15,7 @@
             - code_length.times do |cell_number|
               div class=guess_class(guess_number, cell_number) data-number=cell_number
                 == "&nbsp;"
-                div class=guess_class(guess_number, cell_number) data-number=cell_number
+                .inner-guess-cell.ba.b--black.dib.rc.br4.tc data-number=cell_number
                   == "&nbsp;"
           .guess-ratings.ml4.dib
             .guess-rating-box.ba.b--black.dib.mb2
