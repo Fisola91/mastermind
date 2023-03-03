@@ -17,13 +17,6 @@ class GameBoardComponent < ViewComponent::Base
     (1..guess_attempts).to_a.reverse
   end
 
-  def inner_guess_class(guess_number, cell_number)
-    attempt = attempts[guess_number - 1]
-    guessed_value = attempt ? attempt.values[cell_number]  : nil
-    bg_class = guessed_value ? "bg-#{guessed_value}" : "bg-black"
-    "inner-guess-cell ba b--black dib rc br4 tc #{bg_class}"
-  end
-
   def guess_class(guess_number, cell_number)
     attempt = attempts[guess_number - 1]
     guessed_value = attempt ? attempt.values[cell_number]  : nil
