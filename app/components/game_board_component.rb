@@ -13,15 +13,27 @@ class GameBoardComponent < ViewComponent::Base
     @attempts = attempts
   end
 
+  def current_attempt_class(guess_number)
+    "current-attempt" if guess_number == current_attempt
+  end
+
   def guesses
     (1..guess_attempts).to_a.reverse
   end
 
   def guess_class(guess_number, cell_number)
+    classes = %w(guess-cell ba b--black dib ml3 mt2 tc br4 rc)
+
     attempt = attempts[guess_number - 1]
     guessed_value = attempt ? attempt.values[cell_number]  : nil
     bg_class = guessed_value ? "bg-#{guessed_value}" : "bg-black"
-    "guess-cell ba b--black dib ml3 mt2 tc br4 rc #{bg_class}"
+    classes << bg_class
+
+    if guess_number == current_attempt && cell_number == 0
+      classes << "current-cell"
+    end
+
+    classes.join(" ")
   end
 
   def feedback(guess_number)
@@ -63,6 +75,10 @@ class GameBoardComponent < ViewComponent::Base
   attr_reader :attempts, :game
 
   private
+
+  def current_attempt
+    attempts.size + 1
+  end
 
   def passcode
     JSON.parse(game.passcode)

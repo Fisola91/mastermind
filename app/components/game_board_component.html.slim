@@ -8,7 +8,7 @@
   .flex.mt4
     div
       - guesses.each do |guess_number|
-        .guess-row.flex data-number=guess_number
+        .guess-row.flex data-number=guess_number class=current_attempt_class(guess_number)
           .guess-chances.mr2.mt3.ml2.w2
             = guess_number
           .all-guess-cell.mr2.ml3.mt1
@@ -23,9 +23,9 @@
                 .guess-rating.ba.b--light-silver.dib.tc.br4 class=feedback_class(feedback_item)
 
     .colo-picker-check.ba.b--black.ml4
-      .color-picker
+      .color-picker data-controller="color-picker"
         - colors.each do |color|
-          .color.dib.bw1.ml2.mt5.mr2.pointer data-color=color class="bg-#{color}"
+          .color.dib.bw1.ml2.mt5.mr2.pointer data-color=color class="bg-#{color}" data-action="click->color-picker#click"
             == "&nbsp;"
       .guess-check.ba.b--black.ml3.mr2
         .text
