@@ -11,6 +11,10 @@ export default class extends Controller {
     currentCell.classList.add(`bg-${color}`)
     currentCell.classList.remove("current-cell")
 
+    const currentNumber = currentCell.dataset.number
+    const input = document.querySelector(`.guess-input[data-number='${currentNumber}']`)
+    input.value = color.toUpperCase()
+
     const nextCell = currentCell.nextElementSibling
     if (!nextCell) return
 

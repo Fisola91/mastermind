@@ -1,4 +1,4 @@
 = form_with url: sessions_path, method: :post, html: { "data-turbo" => false } do |f|
-  = f.label :name, "player name"
+  = f.label :name, "Player name"
   = f.text_field :name
   = f.submit "Start player session"

@@ -1,1 +1,4 @@
-= render @game_board
+p = "Games played: #{@games.count}"
+
+= form_with model: Game.new, action: :post do |f|
+  = f.submit "New game"

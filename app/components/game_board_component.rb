@@ -28,7 +28,7 @@ class GameBoardComponent < ViewComponent::Base
 
     if attempt
       guessed_value = attempt.values[cell_number]
-      classes << "bg-#{guessed_value}"
+      classes << "bg-#{guessed_value.downcase}"
     end
 
     if guess_number == current_attempt && cell_number == 0
