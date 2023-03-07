@@ -88,7 +88,7 @@
   margin-left: 16px;
  }
 
- .guess-check {
+.guess-check {
   width: 55px;
   height: 98px;
   margin-top: 34px;
@@ -97,17 +97,12 @@
   background-color: rgb(79, 50, 10);
   border: 3px solid rgb(83, 62, 31);
   text-align: center;
- }
-
- .guess-check:hover {
-  background-color: rgb(31, 19, 3);
- }
-
- .guess-check p {
   color: white;
-  margin-top: 3px;
-  font-size: 15px;
- }
+  cursor: pointer;
+}
+.guess-check:hover {
+  background-color: rgb(31, 19, 3);
+}
 
  .color {
    margin-top: 20px;
@@ -116,11 +111,6 @@
    width: 25px;
    height: 25px;
   }
-
- .text {
-  color: rgb(237, 229, 229);
-  margin-top: 39px;
- }
 
  .footer {
   display: flex;

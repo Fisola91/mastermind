@@ -5,22 +5,11 @@ class GamesController < ApplicationController
   def index
     if session[:current_player_id]
       @player = Player.find(session[:current_player_id])
-    end
 
-    game = Game.new(passcode: %w(red red green green))
-    attempts = [
-      Attempt.new(values: %w(blue yellow orange purple)),
-      Attempt.new(values: %w(blue yellow orange red)),
-      Attempt.new(values: %w(red blue red orange)),
-      Attempt.new(values: %w(red yellow purple green)),
-      Attempt.new(values: %w(red yellow green green)),
-      Attempt.new(values: %w(red blue green red)),
-      Attempt.new(values: %w(green green red red))
-    ]
-    @game_board = GameBoardComponent.new(
-      game: game,
-      attempts: attempts
-    )
+      @games = Game.joins(:codebreakers).where(codebreakers: { player_id: @player.id }) # Codebreaker.joins(:games).where(player: @player).games
+    else
+      redirect_to new_session_path
+    end
   end
 
   def new
@@ -33,7 +22,7 @@ class GamesController < ApplicationController
   def create
     if session[:current_player_id]
       player = Player.find(session[:current_player_id])
-      game = Game.create!(passcode: ValidColor.passcode.map(&:upcase))
+      game = Game.create!(passcode: ValidColors.four_random_colors)
       codebreaker = Codebreaker.create!(
         player: player,
         game: game
@@ -49,7 +38,11 @@ class GamesController < ApplicationController
     if session[:current_player_id]
       @player = Player.find(session[:current_player_id])
       game = Game.find(params[:id])
-      @component = WebSubmitComponent.new(game: game)
+      attempts = game.attempts
+      @component = GameBoardComponent.new(
+        game: game,
+        attempts: attempts
+      )
     end
   end
 end

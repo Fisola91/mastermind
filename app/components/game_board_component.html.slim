@@ -27,10 +27,10 @@
         - colors.each do |color|
           .color.dib.bw1.ml2.mt5.mr2.pointer data-color=color class="bg-#{color}" data-action="click->color-picker#click"
             == "&nbsp;"
-      .guess-check.ba.b--black.ml3.mr2
-        .text
-          h6 ✓
-        p Check
+      = form_with url: game_url, method: :post, html: { "data-turbo" => false } do |f|
+        - code_length.times do |cell_number|
+          input.guess-input name="guess[]" type="hidden" data-number=cell_number
+        = f.submit "Check", class: "guess-check"
   .footer.ba.b--black
     = form_with url: games_path, method: :post, html: { "data-turbo" => false } do |f|
       = f.submit "NEW GAME", class: "new-game"

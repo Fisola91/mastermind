@@ -28,7 +28,7 @@ class GameBoardComponent < ViewComponent::Base
 
     if attempt
       guessed_value = attempt.values[cell_number]
-      classes << "bg-#{guessed_value}"
+      classes << "bg-#{guessed_value.downcase}"
     end
 
     if guess_number == current_attempt && cell_number == 0
@@ -62,6 +62,10 @@ class GameBoardComponent < ViewComponent::Base
 
   def feedback_class(item)
     COLOR_CLASS_MAP.fetch(item)
+  end
+
+  def game_url
+    game_attempts_path(game.id)
   end
 
   def guess_attempts

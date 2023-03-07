@@ -2,12 +2,12 @@ require "rails_helper"
 
 RSpec.describe GameBoardComponent, type: :component do
   let(:game) {
-    Game.new(passcode: %w(red red green green).to_json)
+    Game.new(id: 1, passcode: %w(RED RED GREEN GREEN).to_json)
   }
   let(:attempts) {
     [
-      Attempt.new(values: %w(blue yellow orange purple)),
-      Attempt.new(values: %w(blue yellow orange red))
+      Attempt.new(values: %w(BLUE YELLOW ORANGE PURPLE)),
+      Attempt.new(values: %w(BLUE YELLOW ORANGE RED))
     ]
   }
   let(:game_board) { GameBoardComponent.new(game: game, attempts: attempts )}
@@ -26,8 +26,7 @@ RSpec.describe GameBoardComponent, type: :component do
       expect(page.find(".color-picker")).to have_selector(".bg-blue")
       expect(page.find(".color-picker")).to have_selector(".bg-purple")
 
-      expect(page).to have_text("Check")
-      expect(page).to have_text("✓")
+      expect(page).to have_button("Check")
 
       game_board.guesses.each do |guess_row|
         expect(page.find(".guess-row#{[guess_row]}").all(".guess-rating").count).to eq 4
@@ -35,12 +34,12 @@ RSpec.describe GameBoardComponent, type: :component do
 
       first_guesses = attempts.first.values
       first_guesses.each do |guess|
-        expect(page.find(".guess-row[data-number=1]")).to have_selector(".bg-#{guess}")
+        expect(page.find(".guess-row[data-number=1]")).to have_selector(".bg-#{guess.downcase}")
       end
 
       second_guesses = attempts.fetch(1).values
       second_guesses.each do |guess|
-        expect(page.find(".guess-row[data-number=2]")).to have_selector(".bg-#{guess}")
+        expect(page.find(".guess-row[data-number=2]")).to have_selector(".bg-#{guess.downcase}")
       end
     end
   end
