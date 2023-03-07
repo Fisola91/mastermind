@@ -13,11 +13,26 @@ RSpec.describe "signed user plays a game" do
     click_on "New game"
     expect(page).to have_css(".board")
 
-    find(".color-picker .color[data-color=red]").click
-    find(".color-picker .color[data-color=orange]").click
-    find(".color-picker .color[data-color=yellow]").click
-    find(".color-picker .color[data-color=green]").click
 
+    find(".color-picker div[data-color=red]").click
+    expect(find(".current-attempt")).to have_selector(".bg-red[data-number='0']")
+
+    find(".color-picker div[data-color=orange]").click
+    expect(find(".current-attempt")).to have_selector(".bg-red[data-number='0']")
+    expect(find(".current-attempt")).to have_selector(".bg-orange[data-number='1']")
+
+    find(".color-picker div[data-color=yellow]").click
+    expect(find(".current-attempt")).to have_selector(".bg-red[data-number='0']")
+    expect(find(".current-attempt")).to have_selector(".bg-orange[data-number='1']")
+    expect(find(".current-attempt")).to have_selector(".bg-yellow[data-number='2']")
+
+    find(".color-picker div[data-color=green]").click
+    expect(find(".current-attempt")).to have_selector(".bg-red[data-number='0']")
+    expect(find(".current-attempt")).to have_selector(".bg-orange[data-number='1']")
+    expect(find(".current-attempt")).to have_selector(".bg-yellow[data-number='2']")
+    expect(find(".current-attempt")).to have_selector(".bg-green[data-number='3']")
+
+    find(".color-picker div[data-color=blue]").click
     expect(find(".current-attempt")).to have_selector(".bg-red[data-number='0']")
     expect(find(".current-attempt")).to have_selector(".bg-orange[data-number='1']")
     expect(find(".current-attempt")).to have_selector(".bg-yellow[data-number='2']")

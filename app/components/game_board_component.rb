@@ -64,6 +64,10 @@ class GameBoardComponent < ViewComponent::Base
     COLOR_CLASS_MAP.fetch(item)
   end
 
+  def game_url
+    game_attempts_path(game.id)
+  end
+
   def guess_attempts
     10
   end

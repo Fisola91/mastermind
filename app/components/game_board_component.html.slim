@@ -27,7 +27,7 @@
         - colors.each do |color|
           .color.dib.bw1.ml2.mt5.mr2.pointer data-color=color class="bg-#{color}" data-action="click->color-picker#click"
             == "&nbsp;"
-      = form_with url: game_attempts_path(game.id), method: :post, html: { "data-turbo" => false } do |f|
+      = form_with url: game_url, method: :post, html: { "data-turbo" => false } do |f|
         - code_length.times do |cell_number|
           input.guess-input name="guess[]" type="hidden" data-number=cell_number
         = f.submit "Check", class: "guess-check"
