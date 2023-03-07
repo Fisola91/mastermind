@@ -13,9 +13,9 @@
             = guess_number
           .all-guess-cell.mr2.ml3.mt1
             - code_length.times do |cell_number|
-              div class=guess_class(guess_number, cell_number) data-number=cell_number
+              div class=outer_circle_class(guess_number, cell_number) data-number=cell_number
                 == "&nbsp;"
-                .inner-guess-cell.ba.b--black.dib.rc.br4.tc data-number=cell_number
+                div class=inner_circle_class(guess_number) data-number=cell_number
                   == "&nbsp;"
           .guess-ratings.ml4.dib
             .guess-rating-box.ba.b--black.dib.mb2

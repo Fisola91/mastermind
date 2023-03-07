@@ -21,18 +21,29 @@ class GameBoardComponent < ViewComponent::Base
     (1..guess_attempts).to_a.reverse
   end
 
-  def guess_class(guess_number, cell_number)
+  def outer_circle_class(guess_number, cell_number)
     classes = %w(guess-cell ba b--black dib ml3 mt2 tc br4 rc)
 
     attempt = attempts[guess_number - 1]
-    guessed_value = attempt ? attempt.values[cell_number]  : nil
-    bg_class = guessed_value ? "bg-#{guessed_value}" : "bg-black"
-    classes << bg_class
+
+    if attempt
+      guessed_value = attempt.values[cell_number]
+      classes << "bg-#{guessed_value}"
+    end
 
     if guess_number == current_attempt && cell_number == 0
       classes << "current-cell"
     end
 
+    classes.join(" ")
+  end
+
+  def inner_circle_class(guess_number)
+    classes = %w(inner-guess-cell ba b--black dib rc br4 tc)
+    attempt = attempts[guess_number - 1]
+    if attempt.nil?
+      classes << "bg-black"
+    end
     classes.join(" ")
   end
 
