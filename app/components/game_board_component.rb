@@ -60,6 +60,10 @@ class GameBoardComponent < ViewComponent::Base
     all_values
   end
 
+  def game_won
+    return "Congratulations!" if passcode == attempts.last.values
+  end
+
   def feedback_class(item)
     COLOR_CLASS_MAP.fetch(item)
   end
