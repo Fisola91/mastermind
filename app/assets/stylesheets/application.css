@@ -21,6 +21,10 @@
   height: 750px
  }
 
+ .board h2 {
+  color: white;
+ }
+
  .secret-row {
   margin-left: 65px;
  }
