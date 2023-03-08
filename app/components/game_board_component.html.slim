@@ -5,8 +5,7 @@
         .secret-cell.ba.b--black.dib.w2.h2.tc.mt4 data-number=i
           = "?"
     p time
-  -if !attempts.empty?
-    h2 = game_won
+  h2 = game_won
   .flex.mt4
     div
       - guesses.each do |guess_number|
