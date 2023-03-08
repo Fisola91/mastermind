@@ -21,16 +21,34 @@
   height: 750px
  }
 
- .board h2 {
+ .board h3 {
   color: white;
  }
 
+ .secret-cell {
+  margin-right: 9px;
+ }
+
+ .secret-box h2 {
+  color: white;
+  margin-left: 4px;
+  margin-top: 7px;
+  justify-items: center;
+ }
+ .secret-box {
+  background-color: rgb(41, 21, 2);
+  height: 40px;
+  width: 180px;
+  margin-left: 75px;
+  margin-top: 18px;
+ }
+
  .secret-row {
-  margin-left: 65px;
+  margin-left: 73px;
  }
 
  .guess-time p {
-  margin-left: 180px;
+  margin-left: 100px;
   margin-top: 30px
  }
 

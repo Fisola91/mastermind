@@ -1,11 +1,15 @@
 .board.ml3
   .guess-time.flex
-    .secret-row.flex.mb2.ml5
-      - code_length.times do |i|
-        .secret-cell.ba.b--black.dib.w2.h2.tc.mt4 data-number=i
-          = "?"
+    - if game_won
+      .secret-row.flex.mb2.ml5
+        - passcode.each do |color|
+          .secret-cell.ba.b--black.dib.w2.h2.tc.mt4.br4 data-color=color class="bg-#{color.downcase}"
+            == "&nbsp;"
+    - else
+      .secret-box.ba.b--black.dib.mb2
+        h2 MASTERMIND
     p time
-  h2 = game_won
+  h3 = game_won
   .flex.mt4
     div
       - guesses.each do |guess_number|

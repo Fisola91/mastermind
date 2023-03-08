@@ -61,11 +61,15 @@ class GameBoardComponent < ViewComponent::Base
   end
 
   def game_won
-    if !attempts.empty? && passcode == attempts.last.values
-      return "Congratulations!"
-    elsif attempts.size == guesses.size && passcode != attempts.last.values
+    if !attempts.empty? && passcode == last_attempt
+      return "Congratulations! You guessed the combination in #{attempts.size} tries"
+    elsif attempts.size == guesses.size && passcode != last_attempt
       return "Sorry, you've lost! It was a bit difficult"
     end
+  end
+
+  def last_attempt
+    attempts.last.values
   end
 
   def feedback_class(item)
