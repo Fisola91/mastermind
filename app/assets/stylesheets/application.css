@@ -31,16 +31,16 @@
 
  .secret-box h2 {
   color: white;
-  margin-left: 6px;
+  margin-left: 4px;
   margin-top: 7px;
   justify-items: center;
  }
  .secret-box {
-  width: 180px;
+  background-color: rgb(41, 21, 2);
   height: 40px;
+  width: 180px;
   margin-left: 75px;
   margin-top: 18px;
-  color: rgb(19, 18, 18);
  }
 
  .secret-row {
