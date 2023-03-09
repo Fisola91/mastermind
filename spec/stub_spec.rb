@@ -16,10 +16,62 @@ class Foo
   end
 end
 
+class Nonsense
+  def initialize(a:, b:)
+    @a = a
+    @b = b
+  end
+
+  def something
+    "default something"
+  end
+end
+
 class App
   def do_stuff
     obj = Foo.new
     obj.method_a
+  end
+
+  def expensive_accounting_thing
+    service = AccountingService.new
+    service.process_payment
+    service.refund_payment
+    :ok
+  end
+end
+
+class AccountingService
+  def process_payment
+    sleep 2
+  end
+
+  def refund_payment
+    sleep 2
+  end
+end
+
+RSpec.describe App do
+  describe "#do_stuff" do
+    it "can have a stubbed Foo#method_a value without using `allow_any_instance_of`" do
+      fake_accounting_service = instance_double(AccountingService)
+      expect(fake_accounting_service).to receive(:process_payment).and_return true
+      expect(fake_accounting_service).to receive(:refund_payment).and_return true
+      allow(AccountingService).to receive(:new).and_return(fake_accounting_service)
+
+      expect(App.new.expensive_accounting_thing).to eq :ok
+    end
+  end
+end
+
+RSpec.describe Nonsense do
+  describe "#something" do
+    it "can be stubbed" do
+      allow_any_instance_of(described_class).to receive(:something).and_return("stubbed something")
+
+      object = Nonsense.new(a: "A", b: "B")
+      expect(object.something).to eq "stubbed something"
+    end
   end
 end
 
