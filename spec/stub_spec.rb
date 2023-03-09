@@ -19,7 +19,6 @@ end
 class App
   def do_stuff
     obj = Foo.new
-    puts "Object id: #{obj.object_id}"
     obj.method_a
   end
 end
@@ -42,19 +41,16 @@ RSpec.describe Foo do
       expect(described_class.new.method_a).to eq "default instance public"
     end
 
-    it "can be stubbed (but not directly)" do
+    it "can be stubbed directly" do
       object_1 = described_class.new
-      object_2 = described_class.new
       allow(object_1).to receive(:method_a).and_return "STUBBED"
 
-      puts "Object 1: #{object_1.object_id}"
-      puts "Object 2: #{object_2.object_id}"
+      expect(object_1.method_a).to eq "STUBBED"
+    end
 
-      aggregate_failures do
-        expect(object_1.method_a).to eq "STUBBED"
-        expect(object_2.method_a).to eq "STUBBED"
-        expect(App.new.do_stuff).to eq "STUBBED"
-      end
+    it "can be stubbed indirectly" do
+      allow_any_instance_of(described_class).to receive(:method_a).and_return "STUBBED"
+      expect(App.new.do_stuff).to eq "STUBBED"
     end
   end
 
