@@ -40,6 +40,8 @@ RSpec.describe "signed user plays a game" do
 
     click_on "Check"
 
+    expect(find(".board")).to have_text("Congratulations!")
+
     expect(find(".guess-row[data-number='1']")).to have_css(".guess-rating.bg-green", count: 4)
   end
 end
