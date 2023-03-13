@@ -4,15 +4,15 @@ class Turn
   end
 
   def guess(colors)
-    result = []
+    result = {}
     colors.each_with_index do |color, idx|
       if passcode[idx] == color
-        result << :exact
+        result[color] = :exact
       elsif passcode.include?(color)
-        result << :partial
+        result[color] ||= :partial
       end
     end
-    result.sort
+    result.values.sort
   end
 
   private
