@@ -91,5 +91,31 @@ RSpec.describe Turn do
         expect(feedback).to match_array [:exact, :partial, :partial, :exact]
       end
     end
+
+    context "duplicate color guesses" do
+      it "returns two :exact, ignoring two partials" do
+        turn = Turn.new(passcode: passcode)
+        feedback = turn.guess(["GREEN", "GREEN", "BLUE", "BLUE"])
+        expect(feedback).to match_array [:exact, :exact]
+      end
+
+      it "returns one :exact, ignoring three partials" do
+        turn = Turn.new(passcode: passcode)
+        feedback = turn.guess(["GREEN", "GREEN", "GREEN", "GREEN"])
+        expect(feedback).to match_array [:exact]
+      end
+
+      it "returns one :partial, ignoring two other partials" do
+        turn = Turn.new(passcode: passcode)
+        feedback = turn.guess(["PURPLE", "RED", "RED", "RED"])
+        expect(feedback).to match_array [:partial]
+      end
+
+      it "returns one :partial, one :exact, ignoring two different partials" do
+        turn = Turn.new(passcode: passcode)
+        feedback = turn.guess(["RED", "BLUE", "RED", "BLUE"])
+        expect(feedback).to match_array [:exact, :partial]
+      end
+    end
   end
 end
