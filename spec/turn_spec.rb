@@ -91,5 +91,24 @@ RSpec.describe Turn do
         expect(feedback).to match_array [:exact, :partial, :partial, :exact]
       end
     end
+
+    it "returns two exacts" do
+      turn = Turn.new(passcode: passcode)
+      feedback = turn.guess(["GREEN", "GREEN", "BLUE", "BLUE"])
+      expect(feedback).to match_array [:exact, :exact]
+    end
+
+    it "returns one exacts" do
+      turn = Turn.new(passcode: passcode)
+      feedback = turn.guess(["GREEN", "GREEN", "GREEN", "GREEN"])
+      expect(feedback).to match_array [:exact]
+    end
+
+    it "returns one eeeeee" do
+      turn = Turn.new(passcode: passcode)
+      feedback = turn.guess(["YELLOW", "YELLOW", "PURPLE", "PURPLE"])
+      expect(feedback).to match_array [:partial]
+    end
+
   end
 end
