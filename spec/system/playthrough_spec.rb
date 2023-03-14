@@ -70,6 +70,7 @@ RSpec.describe "signed user plays a game" do
     click_on "Start player session"
     expect(page).to have_text "You are playing as Tester"
     expect(page).to have_button "Sign out"
+    expect(page).to have_button "How to play"
     click_on "New game"
     expect(page).to have_css(".board")
 
