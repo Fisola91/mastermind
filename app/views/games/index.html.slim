@@ -2,3 +2,6 @@ p = "Games played: #{@games.count}"
 
 = form_with model: Game.new, action: :post do |f|
   = f.submit "New game"
+
+= form_with url: rules_games_path, method: :get do |f|
+  = f.submit "How to play"

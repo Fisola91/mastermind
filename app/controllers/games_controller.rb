@@ -19,6 +19,12 @@ class GamesController < ApplicationController
     end
   end
 
+  def rules
+    if session[:current_player_id]
+      @player = Player.find(session[:current_player_id])
+    end
+  end
+
   def create
     if session[:current_player_id]
       player = Player.find(session[:current_player_id])
@@ -39,7 +45,6 @@ class GamesController < ApplicationController
       @player = Player.find(session[:current_player_id])
       game = Game.find(params[:id])
       attempts = game.attempts
-      p game
       @component = GameBoardComponent.new(
         game: game,
         attempts: attempts

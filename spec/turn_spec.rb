@@ -93,7 +93,7 @@ RSpec.describe Turn do
     end
 
     context "duplicate color guesses" do
-      it "returns two :exact, ignoring two partials" do
+      fit "returns two :exact, ignoring two partials" do
         turn = Turn.new(passcode: passcode)
         feedback = turn.guess(["GREEN", "GREEN", "BLUE", "BLUE"])
         expect(feedback).to match_array [:exact, :exact]
