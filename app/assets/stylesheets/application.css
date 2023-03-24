@@ -54,6 +54,10 @@
   margin-top: 30px
  }
 
+ .guess-row {
+  margin-top: 0px;
+ }
+
  .guess-chances {
   font-size: larger;
  }
@@ -140,7 +144,7 @@
   display: flex;
   width: 454px;
   height: 40px;
-  margin-top: 20px;
+  margin-top: 5px;
   background-color: black;
   align-items: flex-end;
  }
@@ -177,7 +181,9 @@
 
   @media only screen and (min-width: 768px) {
     .board {
-      font-size: larger;
+      font-size: medium;
+      align-items: center;
+      width: 40%
     }
 
     .secret-box {
