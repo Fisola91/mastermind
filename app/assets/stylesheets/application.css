@@ -174,6 +174,7 @@
   grid-template-columns: 1fr 1fr 1fr 1fr;
  }
 
+
  @media only screen and (max-width: 768px) {
     .board {
       width: 100%;
@@ -191,7 +192,7 @@
     .secret-box {
       background-color: rgb(41, 21, 2);
       height: 40px;
-      width: 212px;
+      width: 180px;
      }
   }
 
@@ -205,3 +206,58 @@
       margin-left: 15px;
      }
   }
+
+/* INDEX PAGE*/
+
+@media only screen and (max-width: 768px) {
+  .container {
+    background-color: #1b1b1b;
+    width: 100%;
+    height: 1000px;
+    text-align: center;
+    margin: 0px;
+  }
+
+  .form-control {
+    margin: 20px;
+  }
+
+  .mastermind {
+    color: white;
+    text-decoration: none;
+    font-size: xx-large;
+    margin-top: 50px;
+  }
+  .form-control {
+    margin-top: 80px;
+  }
+
+  .container p {
+    color: white;
+  }
+
+  .instructions {
+  margin: 20px 20px;
+  width: 150px;
+  height: 50px;
+  font-size: x-large;
+  background-color: rgba(106, 67, 28, 0.9);
+  color: white;
+  }
+
+  .sign-out {
+  background-color: rgba(106, 67, 28, 0.9);
+  color: white;
+  width: 150px;
+  height: 50px;
+  font-size: x-large;
+  }
+
+  .new {
+  background-color: rgba(106, 67, 28, 0.9);
+  color: white;
+  width: 150px;
+  height: 50px;
+  font-size: x-large;
+  }
+}
