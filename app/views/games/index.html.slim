@@ -1,4 +1,8 @@
-p = "Games played: #{@games.count}"
+/ = link_to "Mastermind", root_path
+/   -if @player
+/     div You are playing as <i> = @player.name </i>
+/     = form_with url: "/sessions/#{@player.id}", method: :delete, html: { "data-turbo" => false } do |f|
+/       = f.submit "Sign out"
 
 = form_with model: Game.new, action: :post do |f|
   = f.submit "New game"

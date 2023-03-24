@@ -153,18 +153,20 @@
   background-color: black;
   color: rgb(171, 110, 49);
   font-weight: bold;
-  margin-top: 25px;
+  margin-top: 29px;
   margin-left: 60px;
   font-size: larger;
+  text-decoration: none;
  }
 
  .new-game {
-  background-color: black;
+  background-color: rgba(9, 9, 9, 0);
   color: rgb(171, 110, 49);
   font-weight: bold;
   margin-top: 29px;
   font-size: larger;
   margin-left: 30px;
+  border: 0px;
  }
 
  .all-guess-cell {
