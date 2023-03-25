@@ -17,7 +17,7 @@
 
 
  .board {
-  background-color: rgb(114, 70, 27);
+  background-color: rgb(173, 93, 7);
   margin-right: 0px auto;
   margin-left: 0;
   height: 750px
@@ -209,7 +209,7 @@
 
 /* INDEX PAGE*/
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1280px) {
   .container {
     background-color: #1b1b1b;
     width: 100%;
@@ -234,6 +234,7 @@
 
   .container p {
     color: white;
+    padding-top: 70px;
   }
 
   .instructions {
@@ -264,7 +265,7 @@
 
 /* SESSION */
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1280px) {
   .login {
     display: flex;
     background-color: black;
