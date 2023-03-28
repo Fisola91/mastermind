@@ -30,6 +30,8 @@
 
       .colo-picker-check.ba.b--black.ml4
         .color-picker data-controller="color-picker"
+          div data-action="click->color-picker#undo"
+            = "Undo"
           - colors.each do |color|
             .color.dib.bw1.ml2.mt5.mr2.pointer data-color=color class="bg-#{color}" data-action="click->color-picker#click"
               == "&nbsp;"
