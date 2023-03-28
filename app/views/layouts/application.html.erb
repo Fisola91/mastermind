@@ -10,13 +10,6 @@
   </head>
 
   <body>
-    <h1><%= link_to "Mastermind", "/"%></h1>
-    <% if @player %>
-      <div>You are playing as <i><%= @player.name %></i></div>
-      <%= form_with url: "/sessions/#{@player.id}", method: :delete, html: { "data-turbo" => false } do |f| %>
-        <%= f.submit "Sign out" %>
-      <% end %>
-    <% end %>
     <%= yield %>
   </body>
 </html>

@@ -1,7 +1,13 @@
-p = "Games played: #{@games.count}"
+.container
+  -if @player
+    p You are playing as <i> #{@player.name} </i>
+    = link_to "MASTERMIND", root_path, class: "mastermind"
+    .form-control
+      = form_with model: Game.new, action: :post do |f|
+        = f.submit "New game", class: "new"
 
-= form_with model: Game.new, action: :post do |f|
-  = f.submit "New game"
+      = form_with url: rules_games_path, method: :get do |f|
+        = f.submit "How to play", class: "instructions"
 
-= form_with url: rules_games_path, method: :get do |f|
-  = f.submit "How to play"
+      = form_with url: "/sessions/#{@player.id}", method: :delete, html: { "data-turbo" => false } do |f|
+        = f.submit "Sign out", class: "sign-out"
