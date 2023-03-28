@@ -14,9 +14,11 @@
  *= require_self
  */
 
+
+
  .board {
   background-color: rgb(114, 70, 27);
-  margin-right: 250px;
+  margin-right: 0px auto;
   margin-left: 0;
   height: 750px
  }
@@ -48,8 +50,12 @@
  }
 
  .guess-time p {
-  margin-left: 100px;
+  margin-left: 70px;
   margin-top: 30px
+ }
+
+ .guess-row {
+  margin-top: 0px;
  }
 
  .guess-chances {
@@ -138,7 +144,7 @@
   display: flex;
   width: 454px;
   height: 40px;
-  margin-top: 20px;
+  margin-top: 5px;
   background-color: black;
   align-items: flex-end;
  }
@@ -158,5 +164,42 @@
   font-weight: bold;
   margin-top: 29px;
   font-size: larger;
-  margin-left: 60px;
+  margin-left: 30px;
  }
+
+ .all-guess-cell {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+ }
+
+ @media only screen and (max-width: 768px) {
+    .board {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  @media only screen and (min-width: 768px) {
+    .board {
+      font-size: medium;
+      align-items: center;
+      width: 40%
+    }
+
+    .secret-box {
+      background-color: rgb(41, 21, 2);
+      height: 40px;
+      width: 212px;
+     }
+  }
+
+  @media only screen and (max-width: 380px) {
+
+    .colo-picker-check {
+      margin-left: 15px;
+     }
+
+     .guess-ratings {
+      margin-left: 15px;
+     }
+  }
