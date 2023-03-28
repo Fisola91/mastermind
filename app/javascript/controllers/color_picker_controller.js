@@ -20,4 +20,23 @@ export default class extends Controller {
 
     nextCell.classList.add("current-cell")
   }
+
+  undo() {
+    const currentCell = document.querySelector(".current-cell")
+    let lastCell
+    if (!currentCell) {
+      lastCell = document.querySelector(".current-attempt .guess-cell:last-child")
+    } else {
+      lastCell = currentCell.previousSibling
+    }
+    if (!lastCell) return
+
+    const backgroundClasses = Array.from(lastCell.classList).filter(className => className.startsWith("bg-"))
+    backgroundClasses.forEach(className => lastCell.classList.remove(className))
+
+    if (currentCell) {
+      currentCell.classList.remove('current-cell')
+    }
+    lastCell.classList.add('current-cell')
+  }
 }
