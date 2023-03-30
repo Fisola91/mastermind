@@ -116,6 +116,10 @@
   margin-left: 16px;
  }
 
+ .color-picker div {
+  color: white;
+ }
+
 .guess-check {
   width: 55px;
   height: 98px;
