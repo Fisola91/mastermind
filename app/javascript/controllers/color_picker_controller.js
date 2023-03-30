@@ -15,6 +15,13 @@ export default class extends Controller {
     const input = document.querySelector(`.guess-input[data-number='${currentNumber}']`)
     input.value = color.toUpperCase()
 
+    const guessCheck = document.querySelector(".guess-check")
+    if (currentNumber < 3) {
+      guessCheck.disabled=true
+    } else {
+      guessCheck.disabled=false
+    }
+
     const nextCell = currentCell.nextElementSibling
     if (!nextCell) return
 
