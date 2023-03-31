@@ -28,8 +28,8 @@
                 - feedback(guess_number).each do |feedback_item|
                   .guess-rating.ba.b--light-silver.dib.tc.br4 class=feedback_class(feedback_item)
 
-      .colo-picker-check.ba.b--black.ml4
-        .color-picker data-controller="color-picker"
+      .colo-picker-check.ba.b--black.ml4 data-controller="color-picker"
+        .color-picker
           div data-action="click->color-picker#undo"
             = "Undo"
           - colors.each do |color|
@@ -38,7 +38,8 @@
         = form_with url: game_url, method: :post, html: { "data-turbo" => false } do |f|
           - code_length.times do |cell_number|
             input.guess-input name="guess[]" type="hidden" data-number=cell_number
-          = f.submit "Check", class: "guess-check"
+          div data-action="click->color-picker#disabled"
+            = f.submit "Check", class: "guess-check"
 
     .footer.ba.b--black
       = form_with url: games_path, method: :post, html: { "data-turbo" => false } do |f|
