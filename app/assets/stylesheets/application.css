@@ -116,10 +116,14 @@
   margin-left: 16px;
  }
 
+ .color-picker div {
+  color: white;
+ }
+
 .guess-check {
   width: 55px;
   height: 98px;
-  margin-top: 34px;
+  margin-top: 14px;
   margin-left: 8px;
   border-radius: 6px;
   background-color: rgb(79, 50, 10);
