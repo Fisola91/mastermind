@@ -8,7 +8,7 @@ A game where two players assume the role of code maker and code breaker. The cod
   
 Sign-in Page
   <ul>
-    <li>The player can sign in with any name</li
+  <li>The player can sign in with any name</li>
   </ul>
 
 Index page
