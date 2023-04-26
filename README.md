@@ -6,21 +6,21 @@ A game where two players assume the role of code maker and code breaker. The cod
 
 <h2> Features and Interface </h2>
   
-Sign-in Page
+1. Sign-in Page
   <ul>
   <li>The player can sign in with any name</li>
   </ul>
 
-Index page
+2. Index page
   <ul>
     <li>The signed in player can start the game</li>
     <li>The signed in player can read the rules of the game</li>
     <li>The signed in player can sign out</li>
   </ul>
 
+![image](https://user-images.githubusercontent.com/81283781/234716327-592277b9-dbd5-470f-9b8b-d6019c879bed.png)
 
-
-Gameboard page
+3. Gameboard page
   <ul>
      <li>The player can play the game and win</li>
      <li>The player can play the game and lost</li>
@@ -28,7 +28,7 @@ Gameboard page
      
 ![image](https://user-images.githubusercontent.com/81283781/234713961-35ff130b-eeb1-41ac-91f5-b606118f1e50.png) 
 ![image](https://user-images.githubusercontent.com/81283781/234714594-7af8635e-049d-4a7e-9d7a-f4eea3266019.png)
-![image](https://user-images.githubusercontent.com/81283781/234716327-592277b9-dbd5-470f-9b8b-d6019c879bed.png)
+
 
 <h2> Tech stack </h2>
 Frontend
