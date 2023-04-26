@@ -7,14 +7,14 @@ A game where two players assume the role of code maker and code breaker. The cod
 <h2> Features and Interface </h2>
 1. Sign-in Page
   <ul>
-     <li>The player can sign in with any name</li>
+     <li>The player can sign in with any name</li
   </ul>
 
  2. Index page
    <ul>
      <li>The signed in player can start the game</li>
      <li>The signed in player can read the rules of the game</li>
-     <li>The signed in player can sign out</li>
+     <li>The signed in player can sign out</li
    </ul>
 
 3. Gameboard page
