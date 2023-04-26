@@ -24,7 +24,7 @@ A game where two players assume the role of code maker and code breaker. The cod
      <li>The player can play the game and lost</li>
   </ul>
      
-![image](https://user-images.githubusercontent.com/81283781/234713961-35ff130b-eeb1-41ac-91f5-b606118f1e50.png) 
+![image](https://user-images.githubusercontent.com/81283781/234717570-8280eae2-91df-4b80-adf1-cf779abcb2fa.png) 
 ![image](https://user-images.githubusercontent.com/81283781/234714594-7af8635e-049d-4a7e-9d7a-f4eea3266019.png)
 
 
