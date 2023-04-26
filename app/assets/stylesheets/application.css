@@ -45,7 +45,7 @@ h2, h3 {
 }
 
 .guess-row {
-  height: calc((100vh - 36px - 36px) / 10);
+  height: calc((100vh - 48px - 48px) / 10);
   display: flex;
   min-height: calc(36px + 1em);
   justify-content: space-between;
@@ -55,13 +55,13 @@ h2, h3 {
   width: 2rem;
   min-width: 2rem;
   text-align: center;
-  padding-top: .1em;
-  line-height: 36px;
+  margin-top: 0;
+  line-height: 35px;
 }
 
 .all-guess-cell {
   padding-top: .1em;
-  line-height: 36px;
+  line-height: 48px;
   display: flex;
   width: 100%;
   justify-content: space-around;
@@ -98,7 +98,7 @@ h2, h3 {
 }
 
 .guess-ratings {
-  padding-top: .5em;
+  padding-top: 0;
   padding-left: 18px;
 }
 .guess-rating-box {
@@ -129,7 +129,7 @@ h2, h3 {
   border-block-end-color: rgb(91, 56, 21);
   border-inline-end-color: rgb(91, 56, 21);
   width: 72px;
-  height: 550px;
+  height: 545px;
   text-align: center;
 }
 
@@ -149,7 +149,7 @@ h2, h3 {
 .guess-check {
   width: 55px;
   height: 95px;
-  margin: 5px 0 0 2px;
+  margin: 2px 0 0 2px;
   border-radius: 6px;
   background-color: rgb(79, 50, 10);
   border: 3px solid rgb(83, 62, 31);
@@ -180,7 +180,7 @@ h2, h3 {
 }
 
 .footer {
-  position: absolute;
+  position: fixed;
   left: 0;
   bottom: 0;
   background-color: black;

@@ -1,4 +1,4 @@
-.board.ml3
+.board
   .header
     - if game_won
       .actual-code-row
@@ -38,7 +38,7 @@
         div data-action="click->color-picker#disabled"
           = f.submit "Check", class: "guess-check"
 
-    .footer.ba.b--black
-      = form_with url: games_path, method: :post, html: { "data-turbo" => false } do |f|
-        = f.submit "NEW GAME", class: "new-game"
-        = link_to "MENU", root_path, class: "menu"
+  .footer.ba.b--black
+    = form_with url: games_path, method: :post, html: { "data-turbo" => false } do |f|
+      = f.submit "NEW GAME", class: "new-game"
+      = link_to "MENU", root_path, class: "menu"
