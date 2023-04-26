@@ -31,16 +31,16 @@ A game where two players assume the role of code maker and code breaker. The cod
 
 <h2> Tech stack </h2>
 Frontend
-   <ul>
-     <li>HTML</li>
-     <li>CSS</li>
-     <li>JavaScript(Stimulus)</li>
-   </ul>
+ <ul>
+   <li>HTML</li>
+   <li>CSS</li>
+   <li>JavaScript(Stimulus)</li>
+ </ul>
    
- Backend
-   <ul>
-     <li>Ruby on Rails</li>
-     <li>ViewComponent framework for rendering the view page</li>
-     <li>ActiveRecord(PostgreSQL)</li>
-     <li>RSpec for system and unit test</li>
-   </ul>
+Backend
+ <ul>
+   <li>Ruby on Rails</li>
+   <li>ViewComponent framework for rendering the view page</li>
+   <li>ActiveRecord(PostgreSQL)</li>
+   <li>RSpec for system and unit test</li>
+ </ul>
