@@ -20,7 +20,6 @@ A game where two players assume the role of code maker and code breaker. The cod
     <li>The player can sign out</li>
   </ul>
 
-![image](https://user-images.githubusercontent.com/81283781/234716327-592277b9-dbd5-470f-9b8b-d6019c879bed.png)
 ![image](https://user-images.githubusercontent.com/81283781/234717159-1a015474-37a3-4a1c-a80c-9addef3829c2.png)
 
 3. Gameboard page
