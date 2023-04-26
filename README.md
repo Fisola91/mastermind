@@ -17,6 +17,8 @@ Index page
     <li>The signed in player can read the rules of the game</li>
     <li>The signed in player can sign out</li>
   </ul>
+![image](https://user-images.githubusercontent.com/81283781/234716327-592277b9-dbd5-470f-9b8b-d6019c879bed.png)
+
 
 Gameboard page
   <ul>
