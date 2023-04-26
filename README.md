@@ -19,6 +19,7 @@ A game where two players assume the role of code maker and code breaker. The cod
    </ul>
 ![image](https://user-images.githubusercontent.com/81283781/234712641-6b79af4e-ecca-423e-85a4-370b941574dd.png)
 
+
 3. Gameboard page
     <ul>
      <li>The player can play the game and win</li>
