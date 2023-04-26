@@ -13,9 +13,15 @@ A game where two players assume the role of code maker and code breaker. The cod
 
  2. Index page
    <ul>
-     <li>The signed in player can play the game</li>
+     <li>The signed in player can start the game</li>
      <li>The signed in player can read the rules of the game</li>
      <li>The signed in player can sign out</li>
    </ul>
 ![image](https://user-images.githubusercontent.com/81283781/234712641-6b79af4e-ecca-423e-85a4-370b941574dd.png)
 
+3. Gameboard page
+    <ul>
+     <li>The player can play the game and win</li>
+     <li>The player can play the game and lost</li
+   </ul>
+![image](https://user-images.githubusercontent.com/81283781/234713961-35ff130b-eeb1-41ac-91f5-b606118f1e50.png)
