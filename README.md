@@ -6,13 +6,13 @@ A game where two players assume the role of code maker and code breaker. The cod
 
 <h2> Features and Interface </h2>
 1. Sign-in Page
-  <ol>
+  <ul>
      <li>Sign in with the player name</li>
-  </ol>
+  </ul>
  2. Index page
-   <ol>
+   <ul>
      <li>Sign in with the player name</li>
      <li>How to play (Rules of the game)</li>
      <li>Sign out</li>
-   </ol>
+   </ul>
 
