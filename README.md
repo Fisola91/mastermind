@@ -11,6 +11,7 @@ A game where two players assume the role of code maker and code breaker. The cod
   <li>The player can login with any name</li>
   </ul>
 ![image](https://user-images.githubusercontent.com/81283781/234716983-3c82d763-1e20-45ad-b222-1568e307475f.png)
+![image](https://user-images.githubusercontent.com/81283781/234717091-3dbb2d6b-cdab-4400-b33c-ebc9aa0d084b.png)
 
 
 2. Index page
