@@ -136,7 +136,6 @@ h2, h3 {
 .color-picker .undo {
   text-align: center;
   color: white;
-
 }
 
 .color-picker .color {
@@ -148,7 +147,7 @@ h2, h3 {
 
 .guess-check {
   width: 55px;
-  height: 95px;
+  height: 97px;
   margin: 2px 0 0 2px;
   border-radius: 6px;
   background-color: rgb(79, 50, 10);
@@ -176,7 +175,7 @@ h2, h3 {
   width: 25px;
   height: 25px;
   border-radius: 50%;
-  margin: 4px 30px 0 6px;
+  margin: 4px 0 0 6px;
 }
 
 .footer {
@@ -217,10 +216,12 @@ h2, h3 {
   height: 100vh;
   text-align: center;
   margin: 0px;
+  position: fixed;
 }
 
 .form-control {
   margin: 20px;
+  margin-top: 80px;
 }
 
 .mastermind {
@@ -228,9 +229,6 @@ h2, h3 {
   text-decoration: none;
   font-size: xx-large;
   margin-top: 50px;
-}
-.form-control {
-  margin-top: 80px;
 }
 
 .container p {
@@ -279,7 +277,6 @@ h2, h3 {
 }
 
 /* SESSION */
-
 .login {
   display: flex;
   background-color: black;
@@ -287,6 +284,7 @@ h2, h3 {
   height: 1000px;
   text-align: center;
   font-size: x-large;
+  position: fixed;
 }
 
 .login label {
