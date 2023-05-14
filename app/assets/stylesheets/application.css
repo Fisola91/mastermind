@@ -19,6 +19,7 @@
  body {
   margin: 0;
   background-color:rgb(173, 93, 7);
+  overflow-x: hidden;
 }
 
 h2, h3 {
