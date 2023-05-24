@@ -1,13 +1,13 @@
 .board
   .header
-    - if game_won
+    - if game_outcome
       .actual-code-row
         - passcode.each do |color|
           .color class="bg-#{color.downcase}"
     - else
       h2 MASTERMIND
-    - if game_won
-      h3 = game_won
+    - if game_outcome
+      h3 = game_outcome
   .main-block.flex.justify-around
     .guess-rows
       - guesses.each do |guess_number|
