@@ -16,7 +16,7 @@ RSpec.describe GameBoardComponent, type: :component do
     render_inline game_board
 
     aggregate_failures do
-      expect(page.find(".secret-box")).to have_text "MASTERMIND"
+      expect(page.find(".header")).to have_text "MASTERMIND"
       expect(page.all(".guess-chances").map(&:text)).to eq (1..10).to_a.map(&:to_s).reverse
 
       expect(page.find(".color-picker")).to have_selector(".bg-red")

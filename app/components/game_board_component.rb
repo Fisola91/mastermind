@@ -22,7 +22,7 @@ class GameBoardComponent < ViewComponent::Base
   end
 
   def outer_circle_class(guess_number, cell_number)
-    classes = %w(guess-cell ba b--black dib ml3 mt2 tc br4 rc)
+    classes = %w(guess-cell)
 
     attempt = attempts[guess_number - 1]
 
@@ -39,7 +39,7 @@ class GameBoardComponent < ViewComponent::Base
   end
 
   def inner_circle_class(guess_number)
-    classes = %w(inner-guess-cell ba b--black dib rc br4 tc)
+    classes = %w(inner-guess-cell)
     attempt = attempts[guess_number - 1]
     if attempt.nil?
       classes << "bg-black"

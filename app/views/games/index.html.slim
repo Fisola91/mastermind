@@ -7,7 +7,7 @@
         = f.submit "New game", class: "new"
 
       = form_with url: rules_games_path, method: :get do |f|
-        = f.submit "How to play", class: "instructions"
+        = f.submit "How to play", class: "how-to-play"
 
       = form_with url: "/sessions/#{@player.id}", method: :delete, html: { "data-turbo" => false } do |f|
         = f.submit "Sign out", class: "sign-out"
