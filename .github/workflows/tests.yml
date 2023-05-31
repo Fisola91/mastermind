@@ -4,8 +4,27 @@ on: [push]
 jobs:
   test:
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:14.2
+        env:
+          POSTGRES_USER: postgres_u
+          POSTGRES_PASSWORD: postgres_p
+
+        ports:
+          - 5432:5432
+        options: >-
+          --mount type=tmpfs,destination=/var/lib/postgresql/data
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
     env:
       RAILS_ENV: test
+      POSTGRES_USER: postgres_u
+      POSTGRES_PASSWORD: postgres_p
+      POSTGRES_HOST: localhost
+      POSTGRES_TEST_DB: mastermind_test
     steps:
       - name: Checkout
         uses: actions/checkout@v2
