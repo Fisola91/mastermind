@@ -47,7 +47,7 @@ h2, h3 {
 }
 
 .guess-row {
-  height: calc((100vh - 48px - 48px) / 10);
+  height: calc((100vh - 48px - 48px) / 11);
   display: flex;
   min-height: calc(36px + 1em);
   justify-content: space-between;
@@ -131,7 +131,7 @@ h2, h3 {
   border-block-end-color: rgb(91, 56, 21);
   border-inline-end-color: rgb(91, 56, 21);
   width: 72px;
-  height: 545px;
+  height: calc(100vh - 80px - 80px);
   text-align: center;
 }
 
@@ -149,7 +149,7 @@ h2, h3 {
 
 .guess-check {
   width: 55px;
-  height: 97px;
+  height: 95px;
   margin: 2px 0 0 2px;
   border-radius: 6px;
   background-color: rgb(79, 50, 10);
