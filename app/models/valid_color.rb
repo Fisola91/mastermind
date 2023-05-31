@@ -1,5 +1,4 @@
 class ValidColor < ApplicationRecord
-  serialize :colors
   scope :passcode, -> { select(:colors)
                         .first[:colors]
                         .shuffle
