@@ -6,7 +6,7 @@ class GamesController < ApplicationController
     if session[:current_player_id]
       @player = Player.find(session[:current_player_id])
 
-      @games = Game.joins(:codebreakers).where(codebreakers: { player_id: @player.id }) # Codebreaker.joins(:games).where(player: @player).games
+      @games = Game.joins(:codebreakers).where(codebreakers: { player_id: @player.id })
     else
       redirect_to new_session_path
     end

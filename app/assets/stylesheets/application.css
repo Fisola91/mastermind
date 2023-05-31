@@ -247,6 +247,15 @@ h2, h3 {
   color: white;
 }
 
+.instructions {
+  background-color: white;
+  height: 100vh;
+}
+
+.instructions h2 {
+  color: black;
+}
+
 .sign-out {
   background-color: rgba(106, 67, 28, 0.9);
   color: white;
