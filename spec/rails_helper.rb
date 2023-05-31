@@ -69,7 +69,6 @@ RSpec.configure do |config|
   config.before(:example, type: :system) do
     driven_by :selenium, using: :headless_chrome
   end
-
 end
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|
