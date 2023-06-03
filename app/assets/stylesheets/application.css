@@ -131,7 +131,7 @@ h2, h3 {
   border-block-end-color: rgb(91, 56, 21);
   border-inline-end-color: rgb(91, 56, 21);
   width: 72px;
-  height: calc(100vh - 100px - 110px);
+  height: calc(100vh - 100px - 114px);
   text-align: center;
 }
 
