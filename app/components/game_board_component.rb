@@ -51,7 +51,7 @@ class GameBoardComponent < ViewComponent::Base
     attempt = attempts[guess_number - 1]
     all_values = Array.new(code_length)
     return all_values if attempt.nil?
-
+    
     turn = Turn.new(passcode: passcode)
     known_values = turn.guess(attempt.values)
     known_values.each_with_index do |known_value, idx|
