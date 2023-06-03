@@ -1,9 +1,9 @@
-# fly.toml app configuration file generated for mastermind-boardgame on 2023-06-03T14:29:32+02:00
+# fly.toml app configuration file generated for mastermind-game on 2023-06-03T14:39:12+02:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = "mastermind-boardgame"
+app = "mastermind-game"
 primary_region = "arn"
 console_command = "/rails/bin/rails console"
 
