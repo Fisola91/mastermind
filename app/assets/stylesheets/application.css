@@ -131,7 +131,7 @@ h2, h3 {
   border-block-end-color: rgb(91, 56, 21);
   border-inline-end-color: rgb(91, 56, 21);
   width: 72px;
-  height: calc(100vh - 100px - 95px);
+  height: calc(100vh - 28vh);
   text-align: center;
 }
 
@@ -149,7 +149,7 @@ h2, h3 {
 
 .guess-check {
   width: 55px;
-  height: calc((100vh - 100px - 100px) / 7);
+  height: 5rem;
   margin: 2px 0 0 2px;
   border-radius: 6px;
   background-color: rgb(79, 50, 10);
