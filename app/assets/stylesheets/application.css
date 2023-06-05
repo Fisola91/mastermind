@@ -103,6 +103,7 @@ h2, h3 {
   padding-top: 0;
   padding-left: 18px;
 }
+
 .guess-rating-box {
   width: 36px;
   height: 36px;
@@ -131,7 +132,6 @@ h2, h3 {
   border-block-end-color: rgb(91, 56, 21);
   border-inline-end-color: rgb(91, 56, 21);
   width: 72px;
-  height: calc(100vh - 140px - 36px);
   text-align: center;
 }
 
@@ -149,8 +149,8 @@ h2, h3 {
 
 .guess-check {
   width: 55px;
-  height: 5rem;
-  margin: 2px 0 0 2px;
+  height: 6rem;
+  margin: 10px 0 0 2px;
   border-radius: 6px;
   background-color: rgb(79, 50, 10);
   border: 3px solid rgb(83, 62, 31);
