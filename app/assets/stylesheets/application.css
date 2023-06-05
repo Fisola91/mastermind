@@ -141,7 +141,7 @@ h2, h3 {
 }
 
 .color-picker {
-  height: calc(100vh -72px - 36px);
+  height: 78%;
 }
 
 .color-picker .color {
