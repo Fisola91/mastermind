@@ -140,6 +140,10 @@ h2, h3 {
   color: white;
 }
 
+.color-picker {
+  height: calc(100vh -72px - 36px);
+}
+
 .color-picker .color {
   margin: 1em auto 1em auto;
   width: 2em;
