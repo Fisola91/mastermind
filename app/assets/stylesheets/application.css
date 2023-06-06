@@ -140,10 +140,6 @@ h2, h3 {
   color: white;
 }
 
-.color-picker {
-  height: 78%;
-}
-
 .color-picker .color {
   margin: 1em auto 1em auto;
   width: 2em;

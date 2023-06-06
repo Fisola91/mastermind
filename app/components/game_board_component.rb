@@ -1,4 +1,3 @@
-require "json"
 require "./app/turn"
 
 class GameBoardComponent < ViewComponent::Base
@@ -108,6 +107,7 @@ class GameBoardComponent < ViewComponent::Base
   end
 
   def passcode
-    JSON.parse(game.passcode)
+    obj = game.passcode.is_a?(Array) ? game.passcode.to_json : game.passcode
+    JSON.parse(obj)
   end
 end
