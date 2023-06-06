@@ -107,7 +107,6 @@ class GameBoardComponent < ViewComponent::Base
   end
 
   def passcode
-    obj = game.passcode.is_a?(Array) ? game.passcode.to_json : game.passcode
-    JSON.parse(obj)
+    JSON.parse(game.passcode)
   end
 end
