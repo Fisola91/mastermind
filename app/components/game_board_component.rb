@@ -108,6 +108,5 @@ class GameBoardComponent < ViewComponent::Base
 
   def passcode
     JSON.parse(game.passcode)
-    Rails.logger.debug "Variable x: #{game.passcode}"
   end
 end
