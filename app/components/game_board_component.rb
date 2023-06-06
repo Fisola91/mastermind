@@ -1,4 +1,3 @@
-require "json"
 require "./app/turn"
 
 class GameBoardComponent < ViewComponent::Base
