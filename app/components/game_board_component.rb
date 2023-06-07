@@ -107,8 +107,7 @@ class GameBoardComponent < ViewComponent::Base
   end
 
   def passcode
+    Rails.logger.debug("This is a debug log #{game.passcode}")
     JSON.parse(game.passcode)
-  rescue => e
-    render plain: "There was an error. Error: #{e}"
   end
 end

@@ -1,8 +1,9 @@
 require "active_support/core_ext/integer/time"
+require 'fly-logger'
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-
+  config.logger = FlyLogger.new(fly_logs_endpoint_url: 'mastermind-game-db.fly.dev')
   # Code is not reloaded between requests.
   config.cache_classes = true
 
