@@ -1,12 +1,11 @@
 require "active_support/core_ext/integer/time"
-require 'fly-logger'
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-  config.logger = FlyLogger.new(fly_logs_endpoint_url: 'mastermind-game-db.fly.dev')
   # Code is not reloaded between requests.
   config.cache_classes = true
-
+  config.logger = ActiveSupport::TaggedLogging.new(Logger.new(STDOUT))
+  config.logger.extend(ActiveSupport::Logger.broadcast(Fly.logger)) 
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers
   # and those relying on copy on write to perform better.
