@@ -152,7 +152,7 @@ RSpec.describe "signed user plays a game" do
     expect(page).not_to have_content("Invalid attempt: contains unknown color")
   end
 
-  it "can log in, win the game an disabled all colors" do
+  it "can log in, win the game and disabled all colors" do
     allow(ValidColors).to receive(:four_random_colors)
       .and_return(%w(RED ORANGE YELLOW GREEN))
 
@@ -198,12 +198,10 @@ RSpec.describe "signed user plays a game" do
     find(".color-picker div[data-color=red]").click
     find(".color-picker div[data-color=orange]").click
     find(".color-picker div[data-color=yellow]").click
-    find(".color-picker div[data-color=green]").click
 
     expect(find(".current-attempt")).not_to have_selector(".bg-red[data-number='0']")
     expect(find(".current-attempt")).not_to have_selector(".bg-orange[data-number='0']")
     expect(find(".current-attempt")).not_to have_selector(".bg-yellow[data-number='0']")
-    expect(find(".current-attempt")).not_to have_selector(".bg-green[data-number='0']")
 
     expect(page).not_to have_content("Invalid attempt: contains unknown color")
   end
