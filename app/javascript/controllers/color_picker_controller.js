@@ -4,8 +4,14 @@ export default class extends Controller {
   click() {
 
     const color = event.target.dataset.color
+    const gameOutcome = document.querySelector("h3");
     const currentAttemptRow = document.querySelector(".current-attempt")
     const currentCell = document.querySelector(".current-cell")
+
+    if (gameOutcome) {
+      color.disabled=true
+    }
+
     if (!currentCell) return
 
     currentCell.classList.remove("bg-black")
