@@ -194,11 +194,14 @@ RSpec.describe "signed user plays a game" do
     expect(find(".board")).to have_text("Congratulations!")
 
     expect(find(".guess-row[data-number='1']")).to have_css(".guess-rating.bg-green", count: 4)
+
+    expect(page).to have_css(".color-picker div[data-color=red]", disabled: true)
+    expect(page).to have_css(".color-picker div[data-color=orange]", disabled: true)
+    expect(page).to have_css(".color-picker div[data-color=yellow]", disabled: true)
+    expect(page).to have_css(".color-picker div[data-color=green]", disabled: true)
+    expect(page).to have_css(".color-picker div[data-color=blue]", disabled: true)
+    expect(page).to have_css(".color-picker div[data-color=purple]", disabled: true)
     
-    find('.color').click
-
-    expect(page).to have_css(".color", disabled: true)
-
     find(".color-picker div[data-color=red]").click
 
     expect(find(".current-attempt")).not_to have_selector(".bg-red[data-number='0']")
