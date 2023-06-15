@@ -4,7 +4,4 @@ class Game < ApplicationRecord
   has_many :codebreakers
 
   serialize :passcode
-  after_initialize do |b|
-    b.passcode = [] if b.passcode == nil
-  end
 end
