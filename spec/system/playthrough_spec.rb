@@ -194,7 +194,7 @@ RSpec.describe "signed user plays a game" do
     expect(find(".board")).to have_text("Congratulations!")
 
     expect(find(".guess-row[data-number='1']")).to have_css(".guess-rating.bg-green", count: 4)
-    
+
     find(".color-picker div[data-color=red]").click
     find(".color-picker div[data-color=orange]").click
     find(".color-picker div[data-color=yellow]").click
