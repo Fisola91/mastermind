@@ -67,7 +67,8 @@ RSpec.configure do |config|
   config.include ViewComponent::TestHelpers, type: :component
   config.include Capybara::RSpecMatchers, type: :component
   config.before(:example, type: :system) do
-    driven_by :selenium, using: :headless_chrome
+    Webdrivers::Chromedriver.required_version = "114.0.5735.90"
+    # driven_by :selenium, using: :headless_chrome
   end
 
 end
