@@ -1,16 +1,22 @@
-
+# SQLite. Versions 3.8.0 and up are supported.
+#   gem install sqlite3
+#
+#   Ensure the SQLite 3 gem is defined in your Gemfile
+#   gem "sqlite3"
+#
 default: &default
   adapter: postgresql
   encoding: unicode
-  username: mastermind
-  password: mastermind-pass
+  username: <%= ENV['POSTGRES_USER'] %>
+  password: <%= ENV['POSTGRES_PASSWORD'] %>
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  host: localhost
+  host: <%= ENV['POSTGRES_HOST'] %>
+  port: 5433
 
 
 development:
   <<: *default
-  database: mastermind_test
+  database: <%= ENV['POSTGRES_TEST_DB'] %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
