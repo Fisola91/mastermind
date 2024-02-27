@@ -12,7 +12,7 @@ jobs:
           POSTGRES_PASSWORD: postgres_p
 
         ports:
-          - 5432:5432
+          - 5433:5433
         options: >-
           --mount type=tmpfs,destination=/var/lib/postgresql/data
           --health-cmd pg_isready
