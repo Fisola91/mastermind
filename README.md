@@ -5,7 +5,7 @@
 
 <ul dir="auto">
    <li>
-    <a href="#user-feature">User-fature</a>
+    <a href="#user-feature">User-fatures</a>
   </li>
   <li>
     <a href="#live-preview">Live preview</a>
@@ -27,10 +27,21 @@
   </li>
 </ul
 
-<div class="markdown-heading" dir="auto"><h2 tabindex="-1" class="heading-element" dir="auto">User Feature</h2><a id="user-content-user-features" class="anchor" aria-label="Permalink: User Features" href="#user-features"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<div class="markdown-heading" dir="auto"><h2 tabindex="-1" class="heading-element" dir="auto">User Features</h2><a id="user-content-user-features" class="anchor" aria-label="Permalink: User Features" href="#user-features"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
 
 <p>
-A game where two players assume the role of code maker and code breaker. The code maker (maybe a computer) sets the secret code while the code breaker (maybe you) guesses the secret code. After each move by the code breaker, the code maker gives feedback to the code breaker as to how close his code is to the secret code. However, the feedback does not indicate which color is specifically referring to. It is the responsibility of the code breaker to figure it out using logic deduction.
+Mastermind is a classic puzzle game where two players assume the role of code maker (computer i.e. your opponent) and code breaker (i.e. yourself). The gameplay is simple, and so are the rules. The goal is to guess a hidden colour code set by the code maker.
+   
+The code maker (your opponent) sets the secret code (combination of four distinct colours) and hides it at the top of the game board, while the code breaker (the player) guesses the secret code by trying out different colour combinations.
+   
+The gameboard contains 10 rows with possibilities of four colours and code pegs (green or black) for each row. After each move by the code breaker (i.e., after clicking on “CHECK”), the code maker provides feedback (i.e. the code pegs) which appear to the right of your colour choices.
+
+**Green dot**: correct colour placed correctly.
+**White dot**: correct colour placed in the wrong position.
+**black dot**: wrong colour.
+
+
+These code pegs aim to show how close your code is to the secret code. Though, the code pegs do not indicate which color is being pointed to. It is your responsibility to find it out through logic deduction.
 </p>
 
 <div class="markdown-heading" dir="auto"><h2 tabindex="-1" class="heading-element" dir="auto">Live Preview</h2><a id="user-content-user-features" class="anchor" aria-label="Permalink: User Journey" href="#user-features"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
