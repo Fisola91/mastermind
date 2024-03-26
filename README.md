@@ -43,7 +43,7 @@ The gameboard contains 10 rows with possibilities of four colours and code pegs 
     Green dot: correct colour placed correctly.
   </li>
   <li>
-   White dot: correct colour placed in the wrong position.>
+   White dot: correct colour placed in a wrong position.
   </li>
   <li>
     black dot: wrong colour.
