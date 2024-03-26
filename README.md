@@ -36,19 +36,15 @@ The code maker (your opponent) sets the secret code (combination of four distinc
    
 The gameboard contains 10 rows with possibilities of four colours and code pegs (green or black) for each row. After each move by the code breaker (i.e., after clicking on “CHECK”), the code maker provides feedback (i.e. the code pegs) which appear to the right of your colour choices.
 
-**Green dot**: correct colour placed correctly.
-**White dot**: correct colour placed in the wrong position.
-**black dot**: wrong colour.
-
 <ul dir="auto">
    <li>
-    **Green dot**: correct colour placed correctly.
+    Green dot: correct colour placed correctly.
   </li>
   <li>
-   **White dot**: correct colour placed in the wrong position.>
+   White dot: correct colour placed in the wrong position.>
   </li>
   <li>
-    **black dot**: wrong colour.
+    black dot: wrong colour.
   </li>
 </ul
 These code pegs aim to show how close your code is to the secret code. Though, the code pegs do not indicate which color is being pointed to. It is your responsibility to find it out through logic deduction.
