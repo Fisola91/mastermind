@@ -56,8 +56,13 @@ These code pegs aim to show how close your code is to the secret code. Though, t
 
 <p dir="auto">Find the live version <a href="https://mastermind-game.fly.dev/" rel="nofollow" previewlistener="true">here</a>.
 Below is the gif recording on a laptop screen.
-  
+
+<h4>Lost game</h4>
 ![User flow](https://github.com/Fisola91/mastermind/blob/master/mastermind.gif)
+
+<h4>Win game</h4>
+![User flow](https://github.com/Fisola91/mastermind/blob/master/mastermind2.gif)
+
 
 
 <div class="markdown-heading" dir="auto"><h2 tabindex="-1" class="heading-element" dir="auto">Built with</h2><a id="user-content-built-with" class="anchor" aria-label="Permalink: Built with" href="#built-with"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
