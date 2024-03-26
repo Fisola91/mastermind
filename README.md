@@ -56,8 +56,15 @@ These code pegs aim to show how close your code is to the secret code. Though, t
 
 <p dir="auto">Find the live version <a href="https://mastermind-game.fly.dev/" rel="nofollow" previewlistener="true">here</a>.
 Below is the gif recording on a laptop screen.
+<li>
+   Lost game
+</li>
 
 ![User flow](https://github.com/Fisola91/mastermind/blob/master/mastermind.gif)
+
+<li>
+   Win game
+</li>
 
 ![User flow](https://github.com/Fisola91/mastermind/blob/master/mastermind2.gif)
 
