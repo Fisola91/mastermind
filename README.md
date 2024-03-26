@@ -40,7 +40,17 @@ The gameboard contains 10 rows with possibilities of four colours and code pegs 
 **White dot**: correct colour placed in the wrong position.
 **black dot**: wrong colour.
 
-
+<ul dir="auto">
+   <li>
+    **Green dot**: correct colour placed correctly.
+  </li>
+  <li>
+   **White dot**: correct colour placed in the wrong position.>
+  </li>
+  <li>
+    **black dot**: wrong colour.
+  </li>
+</ul
 These code pegs aim to show how close your code is to the secret code. Though, the code pegs do not indicate which color is being pointed to. It is your responsibility to find it out through logic deduction.
 </p>
 
