@@ -7,7 +7,7 @@
 
 <ul dir="auto">
    <li>
-    <a href="#user-feature">User-fatures</a>
+    <a href="#user-feature">User-features</a>
   </li>
   <li>
     <a href="#live-preview">Live preview</a>
